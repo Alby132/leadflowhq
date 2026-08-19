@@ -6,48 +6,7 @@
 <title>LeadFlow HQ — Turn visitors into booked appointments</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
-<script type="text/javascript">
-  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-  Cal("init", { origin: "https://cal.com" });
-  Cal("ui", {
-    "styles": { "branding": { "brandColor": "#16223F" } },
-    "hideEventTypeDetails": false,
-    "layout": "month_view"
-  });
-  Cal("inline", {
-    elementOrSelector: "#cal-embed",
-    calLink: "alberto-surina-ogmqkr/leadflowhq"
-  });
-
-  // Hide overflow dates by finding SEP label and hiding that row
-  var hideOverflowDates = function() {
-    var embed = document.getElementById('cal-embed');
-    if (!embed) return;
-
-    // Find all elements containing text
-    var allElements = embed.querySelectorAll('*');
-    allElements.forEach(function(el) {
-      if (el.textContent === 'SEP' || el.textContent.trim() === 'SEP') {
-        // Found SEP label - hide it and all siblings in its parent row
-        var parent = el.parentElement;
-        while (parent && parent !== embed) {
-          // Check if parent looks like a row/container
-          if (parent.style.display !== 'none') {
-            var childCount = parent.children.length;
-            if (childCount >= 5) {  // Likely a date row
-              parent.style.display = 'none';
-              break;
-            }
-          }
-          parent = parent.parentElement;
-        }
-      }
-    });
-  };
-
-  setTimeout(hideOverflowDates, 800);
-  setTimeout(hideOverflowDates, 1500);
-</script>
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script>
 <style>
 
   :root{
@@ -916,7 +875,7 @@
     <div class="eyebrow" style="justify-content:center;">Book a consultation</div>
     <h2 style="margin-top:20px;">Pick a time that works for you</h2>
   </div>
-  <div id="cal-embed" style="max-width:800px; margin:0 auto;"></div>
+  <div class="calendly-inline-widget" data-url="https://calendly.com/hello-leadflowhq/30min" style="min-width:320px; height:630px; max-width:800px; margin:0 auto;"></div>
 </section>
 
 </main>
