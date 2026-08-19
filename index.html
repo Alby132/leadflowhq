@@ -411,6 +411,142 @@
     padding:6px 14px;
   }
 
+  /* ---------- LIVE DEMO LINK ---------- */
+  .live-demo-link{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-size:0.85rem;
+    font-weight:600;
+    color:var(--navy);
+    text-decoration:none;
+    margin-top:4px;
+  }
+  .live-demo-link svg{ width:14px; height:14px; stroke:var(--navy); }
+  .live-demo-link:hover{ text-decoration:underline; }
+
+  /* ---------- PROOF / TRUST ---------- */
+  .proof{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background:var(--surface);
+  }
+  .proof-grid{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:48px;
+    align-items:start;
+    margin-top:44px;
+  }
+  @media (max-width:900px){ .proof-grid{ grid-template-columns:1fr; gap:28px; } }
+
+  .founder-note{
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:32px;
+    background:var(--bg);
+  }
+  .founder-avatar{
+    width:42px; height:42px;
+    border-radius:50%;
+    background:var(--navy);
+    color:#fff;
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:1rem;
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:16px;
+  }
+  .founder-note p{
+    font-size:1.02rem;
+    line-height:1.6;
+    color:var(--ink);
+    margin:0 0 16px;
+  }
+  .founder-note p:last-of-type{ margin-bottom:0; }
+  .founder-sign{
+    font-size:0.85rem;
+    color:var(--ink-faint);
+    margin-top:16px;
+  }
+
+  .trust-chips{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .trust-chip{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:20px;
+    background:var(--bg);
+  }
+  .trust-chip-icon{
+    width:36px; height:36px;
+    border-radius:9px;
+    background:var(--navy-mist);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .trust-chip-icon svg{ width:18px; height:18px; stroke:var(--navy); }
+  .trust-chip-title{ font-weight:600; font-size:0.98rem; margin-bottom:4px; }
+  .trust-chip-copy{ color:var(--ink-soft); font-size:0.9rem; line-height:1.5; margin:0; }
+
+  .proof-demo-cta{
+    margin-top:8px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq-list{
+    max-width:760px;
+    margin-top:44px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .faq-item{
+    border:1px solid var(--line);
+    border-radius:12px;
+    background:var(--surface);
+    overflow:hidden;
+  }
+  .faq-item summary{
+    padding:18px 22px;
+    cursor:pointer;
+    font-weight:600;
+    font-size:0.98rem;
+    list-style:none;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+  }
+  .faq-item summary::-webkit-details-marker{ display:none; }
+  .faq-item summary::after{
+    content:'+';
+    font-family:'Space Grotesk',sans-serif;
+    font-size:1.3rem;
+    color:var(--ink-faint);
+    flex-shrink:0;
+    transition:transform .15s ease;
+  }
+  .faq-item[open] summary::after{ content:'−'; }
+  .faq-item summary:focus-visible{ outline:2px solid var(--navy); outline-offset:-2px; }
+  .faq-item .faq-answer{
+    padding:0 22px 20px;
+    color:var(--ink-soft);
+    font-size:0.94rem;
+    line-height:1.6;
+    margin:0;
+  }
+
   /* ---------- PRICING ---------- */
   .plan-single{
     max-width:520px;
@@ -571,6 +707,10 @@
       <div class="widget-body" id="hero-body"></div>
     </div>
     <div class="demo-note" style="margin-top:14px;">Example conversation — not a real customer</div>
+    <a href="https://4ca763bc-ce6c-4dac-bc0e-d28145b9b70a-00-343i1qfhgf961.spock.replit.dev" target="_blank" rel="noopener" class="live-demo-link">
+      Try the live product yourself
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+    </a>
   </div>
 </section>
 
@@ -642,6 +782,55 @@
   </div>
 </section>
 
+<section class="proof wrap" id="proof">
+  <div class="section-head">
+    <div class="eyebrow">Where things stand</div>
+    <h2>No case studies yet. Here's what you get instead.</h2>
+  </div>
+  <div class="proof-grid">
+    <div class="founder-note">
+      <div class="founder-avatar">A</div>
+      <p>I built LeadFlow HQ myself, and I'm setting it up personally with the first clinics that come on board — not handing you off to a support queue.</p>
+      <p>It's a new product, so there's no wall of logos to show you yet. What I can show you is the thing actually working, right now, with real booking logic behind it — not a mockup.</p>
+      <div class="founder-sign">— Alberto, founder</div>
+    </div>
+    <div>
+      <div class="trust-chips">
+        <div class="trust-chip">
+          <div class="trust-chip-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/></svg>
+          </div>
+          <div>
+            <div class="trust-chip-title">A live product, not a pitch</div>
+            <p class="trust-chip-copy">Try the real widget below — the same one that gets installed on your site, with working booking logic.</p>
+          </div>
+        </div>
+        <div class="trust-chip">
+          <div class="trust-chip-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          </div>
+          <div>
+            <div class="trust-chip-title">Early access, limited spots</div>
+            <p class="trust-chip-copy">I'm onboarding the first clinics personally, which means closer attention now than you'll get once this scales.</p>
+          </div>
+        </div>
+        <div class="trust-chip">
+          <div class="trust-chip-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg>
+          </div>
+          <div>
+            <div class="trust-chip-title">No risk on setup</div>
+            <p class="trust-chip-copy">I configure it with your real hours, services, and pricing before it ever touches your live site.</p>
+          </div>
+        </div>
+      </div>
+      <div class="proof-demo-cta">
+        <a href="https://4ca763bc-ce6c-4dac-bc0e-d28145b9b70a-00-343i1qfhgf961.spock.replit.dev" target="_blank" rel="noopener" class="btn btn-ghost">Try the live demo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="wrap">
   <div class="section-head">
     <div class="eyebrow">Pricing</div>
@@ -664,6 +853,39 @@
       <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>We handle setup — no technical work on your end</li>
     </ul>
     <a href="#cta" class="btn btn-primary" style="width:100%; justify-content:center;">Get started</a>
+  </div>
+</section>
+
+<section class="wrap" id="faq">
+  <div class="section-head">
+    <div class="eyebrow">FAQ</div>
+    <h2>Questions clinic owners usually ask</h2>
+  </div>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>How long does setup actually take?</summary>
+      <p class="faq-answer">About 15 minutes on a call — I configure the widget with your real hours, services, and pricing myself. You don't touch any code.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Will it work with my existing website?</summary>
+      <p class="faq-answer">Yes. It's a small piece of code added to your site, regardless of what platform it's built on. It sits on top of what you already have — nothing gets rebuilt or replaced.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Do I need to give up my current booking system?</summary>
+      <p class="faq-answer">No. The widget captures the lead and the requested time, and connects to your calendar — it doesn't require you to switch tools.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Is visitor data safe?</summary>
+      <p class="faq-answer">Yes. Conversations and leads are tied to your business only — we never share or pool visitor data across other businesses using LeadFlow HQ.</p>
+    </details>
+    <details class="faq-item">
+      <summary>What happens if it can't answer a question?</summary>
+      <p class="faq-answer">It sticks to what it knows — your hours, services, and pricing — and hands off to a lead capture instead of guessing. It won't invent answers about your business.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Can I cancel anytime?</summary>
+      <p class="faq-answer">Yes, it's month-to-month after the one-time setup. No contract lock-in.</p>
+    </details>
   </div>
 </section>
 
