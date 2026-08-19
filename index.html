@@ -516,6 +516,12 @@
     flex-wrap:wrap;
   }
 
+  /* Hide grayed-out overflow dates in Cal.com calendar */
+  #cal-embed [role="button"][aria-disabled="true"],
+  #cal-embed button[disabled] {
+    display: none !important;
+  }
+
   /* ---------- FAQ ---------- */
   .faq-list{
     max-width:760px;
