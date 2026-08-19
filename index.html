@@ -18,6 +18,38 @@
     elementOrSelector: "#cal-embed",
     calLink: "alberto-surina-ogmqkr/leadflowhq"
   });
+
+  // Hide overflow dates from adjacent months
+  setTimeout(function() {
+    var embed = document.getElementById('cal-embed');
+    if (embed) {
+      var buttons = embed.querySelectorAll('button');
+      buttons.forEach(function(btn) {
+        var text = btn.textContent.trim();
+        var isDisabled = btn.disabled || btn.getAttribute('aria-disabled') === 'true';
+        if (isDisabled && text && /^\d+$/.test(text)) {
+          btn.style.display = 'none';
+        }
+      });
+    }
+  }, 500);
+
+  // Re-run when month changes
+  document.addEventListener('click', function() {
+    setTimeout(function() {
+      var embed = document.getElementById('cal-embed');
+      if (embed) {
+        var buttons = embed.querySelectorAll('button');
+        buttons.forEach(function(btn) {
+          var text = btn.textContent.trim();
+          var isDisabled = btn.disabled || btn.getAttribute('aria-disabled') === 'true';
+          if (isDisabled && text && /^\d+$/.test(text)) {
+            btn.style.display = 'none';
+          }
+        });
+      }
+    }, 100);
+  }, true);
 </script>
 <style>
 
@@ -516,11 +548,6 @@
     flex-wrap:wrap;
   }
 
-  /* Hide grayed-out overflow dates in Cal.com calendar */
-  #cal-embed [role="button"][aria-disabled="true"],
-  #cal-embed button[disabled] {
-    display: none !important;
-  }
 
   /* ---------- FAQ ---------- */
   .faq-list{
