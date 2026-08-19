@@ -652,6 +652,12 @@
   footer .contact{ font-size:0.85rem; color:var(--ink-soft); }
   footer .copyright{ font-size:0.78rem; color:var(--ink-faint); margin-top:6px; }
 
+  /* Hide overflow dates from adjacent months in Cal.com embed */
+  #cal-embed [data-testid*="calendar"] button:disabled,
+  #cal-embed button:disabled:not([aria-current]) {
+    visibility: hidden;
+  }
+
   @media (prefers-reduced-motion: reduce){
     .bubble, .lead-ticket{ animation:none !important; opacity:1 !important; transform:none !important; }
     .typing-dots span{ animation:none !important; }
