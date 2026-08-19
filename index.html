@@ -6,6 +6,15 @@
 <title>LeadFlow HQ — Turn visitors into booked appointments</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+  Cal("init", { origin: "https://cal.com" });
+  Cal("ui", {
+    "styles": { "branding": { "brandColor": "#16223F" } },
+    "hideEventTypeDetails": false,
+    "layout": "month_view"
+  });
+</script>
 <style>
 
   :root{
@@ -652,7 +661,7 @@
 <header>
   <nav>
     <div class="logo"><span class="logo-mark"></span>LeadFlow HQ</div>
-    <a href="https://cal.com/alberto-surina-ogmqkr/leadflowhq" target="_blank" rel="noopener" data-cal-link="alberto-surina-ogmqkr/leadflowhq" data-cal-config='{"layout":"month_view"}' class="btn btn-primary">Book a consultation</a>
+    <button type="button" data-cal-link="alberto-surina-ogmqkr/leadflowhq" data-cal-config='{"layout":"month_view"}' class="btn btn-primary">Book a consultation</button>
   </nav>
 </header>
 
@@ -664,7 +673,7 @@
     <h1>Every visitor who leaves without booking was a lead you already had.</h1>
     <p class="sub">LeadFlow HQ answers your website visitors' questions instantly, then asks for their name and number the moment they show interest — so you get a real lead to follow up with, instead of losing them for good.</p>
     <div class="hero-ctas">
-      <a href="https://cal.com/alberto-surina-ogmqkr/leadflowhq" target="_blank" rel="noopener" data-cal-link="alberto-surina-ogmqkr/leadflowhq" data-cal-config='{"layout":"month_view"}' class="btn btn-primary">Book a consultation</a>
+      <button type="button" data-cal-link="alberto-surina-ogmqkr/leadflowhq" data-cal-config='{"layout":"month_view"}' class="btn btn-primary">Book a consultation</button>
       <a href="#how" class="btn btn-ghost">See how it works</a>
     </div>
   </div>
@@ -824,7 +833,7 @@
       <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Lead capture &amp; notifications</li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>We handle setup — no technical work on your end</li>
     </ul>
-    <a href="https://cal.com/alberto-surina-ogmqkr/leadflowhq" target="_blank" rel="noopener" data-cal-link="alberto-surina-ogmqkr/leadflowhq" data-cal-config='{"layout":"month_view"}' class="btn btn-primary" style="width:100%; justify-content:center;">Get started</a>
+    <button type="button" data-cal-link="alberto-surina-ogmqkr/leadflowhq" data-cal-config='{"layout":"month_view"}' class="btn btn-primary" style="width:100%; justify-content:center;">Get started</button>
   </div>
 </section>
 
@@ -872,7 +881,7 @@
   <div class="final-cta">
     <h2>See it working on your own site.</h2>
     <p>15 minutes. We'll set up the widget with your real hours, services, and pricing.</p>
-    <a href="https://cal.com/alberto-surina-ogmqkr/leadflowhq" target="_blank" rel="noopener" data-cal-link="alberto-surina-ogmqkr/leadflowhq" data-cal-config='{"layout":"month_view"}' class="btn btn-invert">Book a consultation</a>
+    <button type="button" data-cal-link="alberto-surina-ogmqkr/leadflowhq" data-cal-config='{"layout":"month_view"}' class="btn btn-invert">Book a consultation</button>
   </div>
 </section>
 
@@ -988,16 +997,6 @@
     loop();
   }
 })();
-</script>
-
-<script type="text/javascript">
-  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-  Cal("init", { origin: "https://cal.com" });
-  Cal("ui", {
-    "styles": { "branding": { "brandColor": "#16223F" } },
-    "hideEventTypeDetails": false,
-    "layout": "month_view"
-  });
 </script>
 
 </body>
