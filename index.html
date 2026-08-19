@@ -19,36 +19,34 @@
     calLink: "alberto-surina-ogmqkr/leadflowhq"
   });
 
-  // Hide overflow dates with MutationObserver
+  // Hide overflow dates by finding SEP label and hiding that row
   var hideOverflowDates = function() {
     var embed = document.getElementById('cal-embed');
-    if (embed) {
-      var allDates = embed.querySelectorAll('[role="gridcell"], [role="button"]');
-      var dateElements = Array.from(allDates).filter(function(el) {
-        return el.textContent && /^[0-9]+$/.test(el.textContent.trim());
-      });
+    if (!embed) return;
 
-      // Count dates and hide those after 31
-      var count = 0;
-      dateElements.forEach(function(el) {
-        var num = parseInt(el.textContent.trim(), 10);
-        if (num > 31) {
-          el.style.display = 'none';
+    // Find all elements containing text
+    var allElements = embed.querySelectorAll('*');
+    allElements.forEach(function(el) {
+      if (el.textContent === 'SEP' || el.textContent.trim() === 'SEP') {
+        // Found SEP label - hide it and all siblings in its parent row
+        var parent = el.parentElement;
+        while (parent && parent !== embed) {
+          // Check if parent looks like a row/container
+          if (parent.style.display !== 'none') {
+            var childCount = parent.children.length;
+            if (childCount >= 5) {  // Likely a date row
+              parent.style.display = 'none';
+              break;
+            }
+          }
+          parent = parent.parentElement;
         }
-      });
-    }
+      }
+    });
   };
 
-  setTimeout(hideOverflowDates, 1000);
-
-  var observer = new MutationObserver(function() {
-    hideOverflowDates();
-  });
-
-  observer.observe(document.getElementById('cal-embed'), {
-    childList: true,
-    subtree: true
-  });
+  setTimeout(hideOverflowDates, 800);
+  setTimeout(hideOverflowDates, 1500);
 </script>
 <style>
 
