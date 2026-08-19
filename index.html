@@ -19,37 +19,36 @@
     calLink: "alberto-surina-ogmqkr/leadflowhq"
   });
 
-  // Hide overflow dates from adjacent months
-  setTimeout(function() {
+  // Hide overflow dates with MutationObserver
+  var hideOverflowDates = function() {
     var embed = document.getElementById('cal-embed');
     if (embed) {
-      var buttons = embed.querySelectorAll('button');
-      buttons.forEach(function(btn) {
-        var text = btn.textContent.trim();
-        var isDisabled = btn.disabled || btn.getAttribute('aria-disabled') === 'true';
-        if (isDisabled && text && /^\d+$/.test(text)) {
-          btn.style.display = 'none';
+      var allDates = embed.querySelectorAll('[role="gridcell"], [role="button"]');
+      var dateElements = Array.from(allDates).filter(function(el) {
+        return el.textContent && /^[0-9]+$/.test(el.textContent.trim());
+      });
+
+      // Count dates and hide those after 31
+      var count = 0;
+      dateElements.forEach(function(el) {
+        var num = parseInt(el.textContent.trim(), 10);
+        if (num > 31) {
+          el.style.display = 'none';
         }
       });
     }
-  }, 500);
+  };
 
-  // Re-run when month changes
-  document.addEventListener('click', function() {
-    setTimeout(function() {
-      var embed = document.getElementById('cal-embed');
-      if (embed) {
-        var buttons = embed.querySelectorAll('button');
-        buttons.forEach(function(btn) {
-          var text = btn.textContent.trim();
-          var isDisabled = btn.disabled || btn.getAttribute('aria-disabled') === 'true';
-          if (isDisabled && text && /^\d+$/.test(text)) {
-            btn.style.display = 'none';
-          }
-        });
-      }
-    }, 100);
-  }, true);
+  setTimeout(hideOverflowDates, 1000);
+
+  var observer = new MutationObserver(function() {
+    hideOverflowDates();
+  });
+
+  observer.observe(document.getElementById('cal-embed'), {
+    childList: true,
+    subtree: true
+  });
 </script>
 <style>
 
