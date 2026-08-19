@@ -14,6 +14,10 @@
     "hideEventTypeDetails": false,
     "layout": "month_view"
   });
+  Cal("inline", {
+    elementOrSelector: "#cal-embed",
+    calLink: "alberto-surina-ogmqkr/leadflowhq"
+  });
 </script>
 <style>
 
@@ -661,7 +665,7 @@
 <header>
   <nav>
     <div class="logo"><span class="logo-mark"></span>LeadFlow HQ</div>
-    <button type="button" data-cal-link="alberto-surina-ogmqkr/leadflowhq" data-cal-config='{"layout":"month_view"}' class="btn btn-primary">Book a consultation</button>
+    <a href="#booking" class="btn btn-primary">Book a consultation</a>
   </nav>
 </header>
 
@@ -673,7 +677,7 @@
     <h1>Every visitor who leaves without booking was a lead you already had.</h1>
     <p class="sub">LeadFlow HQ answers your website visitors' questions instantly, then asks for their name and number the moment they show interest — so you get a real lead to follow up with, instead of losing them for good.</p>
     <div class="hero-ctas">
-      <button type="button" data-cal-link="alberto-surina-ogmqkr/leadflowhq" data-cal-config='{"layout":"month_view"}' class="btn btn-primary">Book a consultation</button>
+      <a href="#booking" class="btn btn-primary">Book a consultation</a>
       <a href="#how" class="btn btn-ghost">See how it works</a>
     </div>
   </div>
@@ -877,12 +881,12 @@
   </div>
 </div>
 
-<section class="wrap" id="cta">
-  <div class="final-cta">
-    <h2>See it working on your own site.</h2>
-    <p>15 minutes. We'll set up the widget with your real hours, services, and pricing.</p>
-    <button type="button" data-cal-link="alberto-surina-ogmqkr/leadflowhq" data-cal-config='{"layout":"month_view"}' class="btn btn-invert">Book a consultation</button>
+<section class="wrap" id="booking">
+  <div style="text-align:center; margin-bottom:48px;">
+    <div class="eyebrow" style="justify-content:center;">Book a consultation</div>
+    <h2 style="margin-top:20px;">Pick a time that works for you</h2>
   </div>
+  <div id="cal-embed" style="max-width:800px; margin:0 auto;"></div>
 </section>
 
 </main>
