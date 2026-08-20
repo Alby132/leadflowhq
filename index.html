@@ -647,6 +647,40 @@
     html{ scroll-behavior:auto; }
   }
 
+  .mobile-sticky-cta {
+    display:none;
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    padding:16px 28px 20px;
+    background:white;
+    border-top:1px solid var(--line);
+    box-shadow:0 -2px 8px rgba(0,0,0,0.08);
+    z-index:999;
+  }
+  .mobile-sticky-cta a {
+    display:block;
+    width:100%;
+    text-align:center;
+    padding:14px 0;
+    background:var(--navy);
+    color:white;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:0.95rem;
+  }
+
+  @media (max-width:640px){
+    .mobile-sticky-cta {
+      display:block;
+    }
+    body {
+      padding-bottom:80px;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -1188,6 +1222,10 @@
     </div>
   </div>
 </section>
+
+<div class="mobile-sticky-cta">
+  <a href="#booking">Schedule Your Demo Today</a>
+</div>
 
 <footer>
   <div class="wrap foot-inner">
