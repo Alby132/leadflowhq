@@ -654,7 +654,7 @@
 <header>
   <nav>
     <div class="logo"><span class="logo-mark"></span>LeadFlow HQ</div>
-    <a href="#booking" class="btn btn-primary">See how many leads you're missing</a>
+    <a href="#booking" class="btn btn-primary">Book a demo</a>
   </nav>
 </header>
 
@@ -664,9 +664,9 @@
   <div>
     <div class="eyebrow">AI Chat for Service Businesses</div>
     <h1>Every after-hours call or website inquiry that goes unanswered is a lead your competitor just won.</h1>
-    <p class="sub">LeadFlow HQ answers customer questions 24/7, captures their name and number instantly, and gets you the lead before anyone else — so you close jobs, not watch competitors grab them.</p>
+    <p class="sub">Never miss another after-hours lead. Get responses in 4 seconds. Close the deal before your competitor even sees it.</p>
     <div class="hero-ctas">
-      <a href="#booking" class="btn btn-primary">See how many leads you're missing</a>
+      <a href="#booking" class="btn btn-primary">Book a demo</a>
       <a href="#how" class="btn btn-ghost">See how it works</a>
     </div>
   </div>
@@ -693,7 +693,7 @@
     <div>
     <div class="section-head">
       <div class="eyebrow">The problem</div>
-      <h2>First responder wins. No response means lost revenue.</h2>
+      <h2>The $1,200+ problem: You don't answer. Your competitor does. Lead's gone.</h2>
     </div>
       <p>It's 10pm Sunday and a customer's AC dies. They search your site, submit a form, maybe call. No one answers. By Monday morning, they've already booked your competitor. You lost a $1,200+ job because you weren't there to respond.</p>
     </div>
@@ -799,8 +799,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/></svg>
           </div>
           <div>
-            <div class="trust-chip-title">A live product, not a pitch</div>
-            <p class="trust-chip-copy">Try the real widget below — the same one that gets installed on your site, with working booking logic.</p>
+            <div class="trust-chip-title">Works with Shopify, WordPress, your existing site</div>
+            <p class="trust-chip-copy">No rebuilds, no migration. Just a small script that installs on whatever platform you use today.</p>
           </div>
         </div>
         <div class="trust-chip">
@@ -808,8 +808,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
           </div>
           <div>
-            <div class="trust-chip-title">Early access, limited spots</div>
-            <p class="trust-chip-copy">I'm onboarding the first service businesses personally, which means closer attention now than you'll get once this scales.</p>
+            <div class="trust-chip-title">I set up each customer personally (5 spots left this month)</div>
+            <p class="trust-chip-copy">Direct access to fix things when they come up. No support queue, no handoff. You get me.</p>
           </div>
         </div>
         <div class="trust-chip">
@@ -817,8 +817,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg>
           </div>
           <div>
-            <div class="trust-chip-title">No risk on setup</div>
-            <p class="trust-chip-copy">I configure it with your real hours, services, and pricing before it ever touches your live site.</p>
+            <div class="trust-chip-title">15-minute setup. I configure everything. You approve once, then it works.</div>
+            <p class="trust-chip-copy">No code, no technical work on your end. I handle hours, services, pricing, integrations. You just say yes.</p>
           </div>
         </div>
       </div>
@@ -832,7 +832,7 @@
 <section class="wrap" id="faq">
   <div class="section-head">
     <div class="eyebrow">FAQ</div>
-    <h2>Questions service business owners ask</h2>
+    <h2>Won't this slow down my site? What about my existing setup?</h2>
   </div>
   <div class="faq-list">
     <details class="faq-item">
@@ -872,7 +872,7 @@
 <section class="wrap" style="text-align:center; padding-top:48px; padding-bottom:48px;">
   <h2 style="max-width:none; margin-bottom:16px;">Ready to stop losing leads?</h2>
   <p style="color:var(--ink-soft); margin-bottom:28px; max-width:60ch; margin-left:auto; margin-right:auto;">See exactly how many prospects are reaching out after hours and booking your competitors instead.</p>
-  <a href="#booking" class="btn btn-primary" style="font-size:1rem; padding:16px 32px;">See how many leads you're missing</a>
+  <a href="#booking" class="btn btn-primary" style="font-size:1rem; padding:16px 32px;">Book a demo</a>
   <p style="font-size:0.9rem; color:var(--ink-faint); margin-top:16px;">Or reach out: <a href="mailto:hello@leadflowhq.tech" style="color:var(--ink-soft); text-decoration:underline;">hello@leadflowhq.tech</a></p>
 </section>
 
@@ -885,7 +885,7 @@
     </style>
     <div>
       <div class="eyebrow">See it live</div>
-      <h2 style="margin-top:20px; margin-bottom:28px;">Watch it answer real questions on your site</h2>
+      <h2 style="margin-top:20px; margin-bottom:28px;">See the 4-second advantage that wins jobs</h2>
       <div style="display:flex; flex-direction:column; gap:20px;">
         <div>
           <div style="font-weight:600; font-size:0.95rem; margin-bottom:6px;">What you'll get</div>
@@ -927,25 +927,43 @@
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function bubble(container, text, cls, delay){
+  function bubble(container, text, cls, delay, timing){
     return new Promise(function(resolve){
       setTimeout(function(){
+        var wrapper = document.createElement('div');
+        wrapper.style.display = 'flex';
+        wrapper.style.alignItems = 'flex-end';
+        wrapper.style.gap = '8px';
+        wrapper.style.marginBottom = '8px';
+
         var el = document.createElement('div');
         el.className = 'bubble ' + cls;
         el.textContent = text;
-        container.appendChild(el);
+        wrapper.appendChild(el);
+
+        if(timing && cls === 'bot'){
+          var timer = document.createElement('div');
+          timer.style.fontSize = '0.7rem';
+          timer.style.color = '#5FEAA5';
+          timer.style.fontWeight = '600';
+          timer.style.whiteSpace = 'nowrap';
+          timer.textContent = timing;
+          wrapper.appendChild(timer);
+        }
+
+        container.appendChild(wrapper);
         resolve();
       }, reduce ? 0 : delay);
     });
   }
 
-  function ticket(container, name, phone, delay){
+  function ticket(container, name, phone, delay, time){
     return new Promise(function(resolve){
       setTimeout(function(){
         var el = document.createElement('div');
         el.className = 'lead-ticket';
         el.innerHTML = '<div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#0E1116" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></div>' +
-          '<div><div>Lead captured — ' + name + '</div><div class="meta">' + phone + '</div></div>';
+          '<div><div>Lead captured — ' + name + '</div><div class="meta">' + phone + ' <strong style="color:#5FEAA5;">(' + time + ')</strong></div></div>';
         container.appendChild(el);
         resolve();
       }, reduce ? 0 : delay);
@@ -956,33 +974,29 @@
     {
       biz: 'FastFlow HVAC',
       lines: [
-        ["My AC just went out, can you come tonight?", 'visitor', 0],
-        ["I can help — we have availability this evening. Can I get your address and best phone number?", 'bot', 500],
-        ["Yes! 123 Oak Street, call me at 555-0187", 'visitor', 500]
+        ["My AC just went out. Can you come tonight? It's an emergency.", 'visitor', 0],
+        ["I can help — we have emergency availability. Address and phone?", 'bot', 400, '4 seconds'],
+        ["Yes! 123 Oak Street, call me at 555-0187", 'visitor', 500],
       ],
-      lead: { name: 'Mike', meta: '555-0187 — Emergency AC repair needed' }
+      lead: { name: 'Mike', meta: '555-0187 — Emergency AC repair, $1,200+ job', time: '8 seconds' }
     },
     {
       biz: 'Premier Plumbing Co',
       lines: [
-        ["Do you have any same-day appointments? I have a leak under my sink.", 'visitor', 0],
-        ["We can usually fit emergency calls same-day. I'll need your location and phone number to check availability.", 'bot', 600],
-        ["I'm at 456 Maple Ave, 555-0294", 'visitor', 600],
-        ["Perfect — we can send someone within 2 hours. Confirming 555-0294?", 'bot', 600],
-        ["Yes, that's right", 'visitor', 600]
+        ["Do you have same-day service? I have a pipe leak under my sink.", 'visitor', 0],
+        ["Yes, we can do same-day. What's your location and best number?", 'bot', 400, '4 seconds'],
+        ["456 Maple Ave, call me at 555-0294", 'visitor', 500],
       ],
-      lead: { name: 'Sarah', meta: '555-0294 — Leak repair, same-day needed' }
+      lead: { name: 'Sarah', meta: '555-0294 — Leak repair, same-day', time: '8 seconds' }
     },
     {
       biz: 'Elite Electric',
       lines: [
-        ["I need to schedule an electrical inspection for my rental unit. Are you available this week?", 'visitor', 0],
-        ["We can schedule that. What day works best, and what's your contact number?", 'bot', 500],
-        ["Thursday would be great, 555-0456", 'visitor', 500],
-        ["Got it — Thursday inspection. Is 10am-12pm window good?", 'bot', 500],
-        ["Perfect, that works", 'visitor', 500]
+        ["Need electrical inspection for my rental. Are you available this week?", 'visitor', 0],
+        ["We can schedule that. What day and what's your number?", 'bot', 400, '4 seconds'],
+        ["Thursday morning, 555-0456", 'visitor', 500],
       ],
-      lead: { name: 'James', meta: '555-0456 — Electrical inspection Thu' }
+      lead: { name: 'James', meta: '555-0456 — Electrical inspection Thursday', time: '8 seconds' }
     }
   ];
 
@@ -993,9 +1007,9 @@
     label.textContent = convo.biz;
     for (var i = 0; i < convo.lines.length; i++){
       var line = convo.lines[i];
-      await bubble(body, line[0], line[1], line[2]);
+      await bubble(body, line[0], line[1], line[2], line[3]);
     }
-    await ticket(body, convo.lead.name, convo.lead.meta, 500);
+    await ticket(body, convo.lead.name, convo.lead.meta, 500, convo.lead.time);
   }
 
   async function loop(){
