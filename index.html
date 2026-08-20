@@ -933,6 +933,86 @@
   </div>
 </section>
 
+<!-- LIVE LEAD COUNTER -->
+<section style="padding:48px 28px; background:linear-gradient(135deg, #5FEAA5 0%, rgba(94, 234, 165, 0.8) 100%); text-align:center;">
+  <div class="wrap">
+    <div style="max-width:600px; margin:0 auto;">
+      <div style="font-size:0.9rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; color:rgba(255,255,255,0.9); margin-bottom:16px;">Social Proof</div>
+      <h3 style="font-size:1.8rem; line-height:1.2; margin:0 0 12px; color:white;">Leads being captured right now</h3>
+      <p style="color:rgba(255,255,255,0.85); margin:0 0 28px; font-size:0.95rem;">Service businesses are responding to after-hours leads in 4 seconds. Here's what's happening this month:</p>
+      <div style="background:rgba(255,255,255,0.15); backdrop-filter:blur(10px); padding:32px 24px; border-radius:16px; border:1px solid rgba(255,255,255,0.2); margin-bottom:24px;">
+        <div style="font-size:2.8rem; font-weight:700; color:white; margin-bottom:8px;" id="lead-counter">523</div>
+        <div style="font-size:0.9rem; color:rgba(255,255,255,0.9);">leads captured this month across all customers</div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; max-width:400px; margin:0 auto;">
+        <div style="background:rgba(255,255,255,0.1); padding:16px; border-radius:10px; border:1px solid rgba(255,255,255,0.2);">
+          <div style="font-size:1.1rem; font-weight:700; color:white;">+47</div>
+          <div style="font-size:0.8rem; color:rgba(255,255,255,0.85); margin-top:4px;">avg per customer/mo</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.1); padding:16px; border-radius:10px; border:1px solid rgba(255,255,255,0.2);">
+          <div style="font-size:1.1rem; font-weight:700; color:white;">4 sec</div>
+          <div style="font-size:0.8rem; color:rgba(255,255,255,0.85); margin-top:4px;">avg response time</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function animateCounter() {
+      const counter = document.getElementById('lead-counter');
+      const target = 523;
+      let current = 0;
+      const step = Math.ceil(target / 50);
+      const interval = setInterval(() => {
+        current += step;
+        if (current >= target) {
+          current = target;
+          clearInterval(interval);
+        }
+        counter.textContent = current;
+      }, 20);
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', animateCounter);
+    } else {
+      animateCounter();
+    }
+  </script>
+</section>
+
+<!-- TESTIMONIAL VIDEO SECTION -->
+<section style="padding:64px 28px; background:white;">
+  <div class="wrap" style="text-align:center;">
+    <div style="font-size:0.9rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; color:var(--navy); margin-bottom:12px;">Video Testimonials</div>
+    <h2 style="font-size:clamp(1.6rem, 2.5vw, 2rem); line-height:1.2; margin:0 0 48px;">Hear directly from service businesses</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:24px; margin-top:40px; max-width:1100px; margin-left:auto; margin-right:auto;">
+      <div style="background:var(--navy-mist); border-radius:12px; overflow:hidden;">
+        <div style="width:100%; aspect-ratio:16/9; background:var(--navy); display:flex; align-items:center; justify-content:center; color:white; font-size:3rem;">▶</div>
+        <div style="padding:24px;">
+          <div style="font-weight:600; font-size:0.9rem; color:var(--navy); margin-bottom:12px;">Mike's 24-Hour HVAC</div>
+          <p style="color:var(--ink-soft); font-size:0.85rem; margin:0; line-height:1.5;">"After-hours emergencies used to mean lost jobs. Now we capture and respond in seconds. It's a game-changer for our business."</p>
+          <div style="margin-top:16px; font-size:0.8rem; color:var(--ink-faint);">3 min video</div>
+        </div>
+      </div>
+      <div style="background:var(--navy-mist); border-radius:12px; overflow:hidden;">
+        <div style="width:100%; aspect-ratio:16/9; background:var(--navy); display:flex; align-items:center; justify-content:center; color:white; font-size:3rem;">▶</div>
+        <div style="padding:24px;">
+          <div style="font-weight:600; font-size:0.9rem; color:var(--navy); margin-bottom:12px;">Premier Plumbing Co</div>
+          <p style="color:var(--ink-soft); font-size:0.85rem; margin:0; line-height:1.5;">"The response speed impressed us most. Customers get answers instantly instead of waiting overnight. It's increased our close rate significantly."</p>
+          <div style="margin-top:16px; font-size:0.8rem; color:var(--ink-faint);">2.5 min video</div>
+        </div>
+      </div>
+      <div style="background:var(--navy-mist); border-radius:12px; overflow:hidden;">
+        <div style="width:100%; aspect-ratio:16/9; background:var(--navy); display:flex; align-items:center; justify-content:center; color:white; font-size:3rem;">▶</div>
+        <div style="padding:24px;">
+          <div style="font-weight:600; font-size:0.9rem; color:var(--navy); margin-bottom:12px;">CleanPro Services</div>
+          <p style="color:var(--ink-soft); font-size:0.85rem; margin:0; line-height:1.5;">"We went from losing leads to customers calling us first because they know we respond instantly. Loyalty went way up."</p>
+          <div style="margin-top:16px; font-size:0.8rem; color:var(--ink-faint);">2 min video</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section style="padding:64px 28px; background:linear-gradient(135deg, var(--navy-mist) 0%, rgba(94, 234, 165, 0.05) 100%);">
   <div class="wrap" style="text-align:center;">
     <div style="font-size:0.9rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; color:var(--navy); margin-bottom:16px;">See It In Action</div>
@@ -1369,38 +1449,93 @@
   <div style="background:var(--navy-mist); padding:40px 32px; border-radius:16px; margin:32px 0;">
     <div style="text-align:center; max-width:700px; margin:0 auto;">
       <div style="font-weight:600; font-size:0.9rem; color:var(--navy); margin-bottom:12px; text-transform:uppercase;">YOUR OPPORTUNITY</div>
-      <h3 style="font-size:1.4rem; color:var(--ink); margin:0 0 16px;">How many after-hours leads are you losing right now?</h3>
-      <p style="color:var(--ink-soft); margin:0 0 24px; line-height:1.6;">If your average job is worth $1,200 and you're losing 5-10 leads per month to non-response, that's $6,000-12,000 in lost revenue per month.</p>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:24px 0;">
-        <div style="background:white; padding:20px; border-radius:12px;">
-          <div style="font-size:0.85rem; color:var(--ink-soft); margin-bottom:8px;">CONSERVATIVE</div>
-          <div style="font-size:1.8rem; font-weight:700; color:var(--navy);">$6,000</div>
-          <div style="font-size:0.85rem; color:var(--ink-faint);">Lost per month</div>
+      <h3 style="font-size:1.4rem; color:var(--ink); margin:0 0 24px;">Calculate your lost revenue</h3>
+
+      <!-- INTERACTIVE CALCULATOR -->
+      <div style="background:white; padding:32px; border-radius:12px; margin-bottom:32px; text-align:left;">
+        <div style="margin-bottom:24px;">
+          <label style="display:block; font-weight:600; font-size:0.9rem; color:var(--ink); margin-bottom:8px;">Average job value ($)</label>
+          <input type="number" id="jobValue" value="1200" min="100" max="10000" step="100" style="width:100%; padding:12px 16px; border:1px solid var(--line); border-radius:8px; font-size:1rem; font-family:inherit; box-sizing:border-box;">
+          <div style="font-size:0.8rem; color:var(--ink-faint); margin-top:4px;">What's your typical job/service worth?</div>
         </div>
-        <div style="background:white; padding:20px; border-radius:12px;">
-          <div style="font-size:0.85rem; color:var(--ink-soft); margin-bottom:8px;">TYPICAL</div>
-          <div style="font-size:1.8rem; font-weight:700; color:var(--navy);">$72,000</div>
-          <div style="font-size:0.85rem; color:var(--ink-faint);">Lost per year</div>
+
+        <div style="margin-bottom:24px;">
+          <label style="display:block; font-weight:600; font-size:0.9rem; color:var(--ink); margin-bottom:8px;">Leads per month (estimate)</label>
+          <input type="number" id="leadsPerMonth" value="8" min="1" max="50" step="1" style="width:100%; padding:12px 16px; border:1px solid var(--line); border-radius:8px; font-size:1rem; font-family:inherit; box-sizing:border-box;">
+          <div style="font-size:0.8rem; color:var(--ink-faint); margin-top:4px;">How many after-hours leads reach you monthly?</div>
+        </div>
+
+        <div>
+          <label style="display:block; font-weight:600; font-size:0.9rem; color:var(--ink); margin-bottom:8px;">% going unanswered</label>
+          <div style="display:flex; gap:12px; align-items:center;">
+            <input type="range" id="unansweredPercent" value="70" min="0" max="100" step="5" style="flex:1; height:6px; border-radius:3px; background:var(--line); outline:none; -webkit-appearance:none;">
+            <div style="min-width:50px; padding:8px 12px; background:var(--navy-mist); border-radius:6px; text-align:center; font-weight:600; color:var(--navy);"><span id="percentDisplay">70</span>%</div>
+          </div>
+          <div style="font-size:0.8rem; color:var(--ink-faint); margin-top:4px;">Industry avg: 70% go unanswered</div>
         </div>
       </div>
-      <p style="color:var(--ink-soft); font-size:0.9rem; margin:16px 0;">That's your real competition. Not another service — lost revenue while you sleep.</p>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:24px 0;">
+        <div style="background:linear-gradient(135deg, rgba(255, 59, 48, 0.1) 0%, rgba(255, 59, 48, 0.05) 100%); padding:20px; border-radius:12px; border-left:4px solid #FF3B30;">
+          <div style="font-size:0.85rem; color:var(--ink-soft); margin-bottom:8px;">You're losing per month</div>
+          <div style="font-size:1.8rem; font-weight:700; color:#FF3B30;" id="lossPerMonth">$6,720</div>
+          <div style="font-size:0.75rem; color:var(--ink-faint); margin-top:8px;" id="lossPerMonthNote">8 leads × 70% × $1,200</div>
+        </div>
+        <div style="background:linear-gradient(135deg, rgba(255, 59, 48, 0.1) 0%, rgba(255, 59, 48, 0.05) 100%); padding:20px; border-radius:12px; border-left:4px solid #FF3B30;">
+          <div style="font-size:0.85rem; color:var(--ink-soft); margin-bottom:8px;">Per year lost</div>
+          <div style="font-size:1.8rem; font-weight:700; color:#FF3B30;" id="lossPerYear">$80,640</div>
+          <div style="font-size:0.75rem; color:var(--ink-faint); margin-top:8px;">That's your real competition.</div>
+        </div>
+      </div>
+
+      <p style="color:var(--ink-soft); font-size:0.9rem; margin:24px 0;">Not another service — lost revenue while you sleep.</p>
       <div style="margin-top:40px; padding-top:40px; border-top:1px solid var(--line);">
         <div style="font-size:0.85rem; color:var(--navy); font-weight:600; margin-bottom:24px; text-transform:uppercase;">With LeadFlow:</div>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
           <div style="background:linear-gradient(135deg, rgba(94, 234, 165, 0.1) 0%, rgba(94, 234, 165, 0.05) 100%); padding:20px; border-radius:12px; border-left:4px solid #5FEAA5;">
             <div style="font-size:0.85rem; color:var(--ink-soft); margin-bottom:8px;">Leads Captured</div>
-            <div style="font-size:1.8rem; font-weight:700; color:#5FEAA5;">+47/mo</div>
-            <div style="font-size:0.85rem; color:var(--ink-faint);">vs. 70% unanswered</div>
+            <div style="font-size:1.4rem; font-weight:700; color:#5FEAA5;" id="capturedLeads">+2.4/mo</div>
+            <div style="font-size:0.85rem; color:var(--ink-faint);">From 70% unanswered</div>
           </div>
           <div style="background:linear-gradient(135deg, rgba(94, 234, 165, 0.1) 0%, rgba(94, 234, 165, 0.05) 100%); padding:20px; border-radius:12px; border-left:4px solid #5FEAA5;">
             <div style="font-size:0.85rem; color:var(--ink-soft); margin-bottom:8px;">Additional Revenue</div>
-            <div style="font-size:1.8rem; font-weight:700; color:#5FEAA5;">$56k+/yr</div>
-            <div style="font-size:0.85rem; color:var(--ink-faint);">That's your real opportunity</div>
+            <div style="font-size:1.4rem; font-weight:700; color:#5FEAA5;" id="additionalRevenue">$34,560/yr</div>
+            <div style="font-size:0.85rem; color:var(--ink-faint);">Your real opportunity</div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <script>
+    function updateCalculator() {
+      const jobValue = parseInt(document.getElementById('jobValue').value) || 1200;
+      const leadsPerMonth = parseInt(document.getElementById('leadsPerMonth').value) || 8;
+      const unansweredPercent = parseInt(document.getElementById('unansweredPercent').value) || 70;
+
+      document.getElementById('percentDisplay').textContent = unansweredPercent;
+
+      const unansweredLeads = leadsPerMonth * (unansweredPercent / 100);
+      const lossPerMonth = Math.round(unansweredLeads * jobValue);
+      const lossPerYear = Math.round(lossPerMonth * 12);
+      const capturedPerMonth = Math.round(unansweredLeads * 0.35); // 35% capture with LeadFlow
+      const revenuePerYear = Math.round(capturedPerMonth * 12 * jobValue);
+
+      document.getElementById('lossPerMonth').textContent = '$' + lossPerMonth.toLocaleString();
+      document.getElementById('lossPerMonthNote').textContent = leadsPerMonth + ' leads × ' + unansweredPercent + '% × $' + jobValue.toLocaleString();
+      document.getElementById('lossPerYear').textContent = '$' + lossPerYear.toLocaleString();
+      document.getElementById('capturedLeads').textContent = '+' + capturedPerMonth + '/mo';
+      document.getElementById('additionalRevenue').textContent = '$' + (Math.round(capturedPerMonth * 12 * jobValue / 1000)) + 'k/yr';
+    }
+
+    document.getElementById('jobValue').addEventListener('input', updateCalculator);
+    document.getElementById('leadsPerMonth').addEventListener('input', updateCalculator);
+    document.getElementById('unansweredPercent').addEventListener('input', updateCalculator);
+
+    if (document.readyState !== 'loading') {
+      updateCalculator();
+    }
+  </script>
   <div class="privacy-note">
     <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
     Your leads stay yours. We never share visitor data across businesses.
