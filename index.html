@@ -20,8 +20,21 @@
     --navy-soft: #22335C;
     --navy-mist: #EEF1F6;
     --navy-mist-2: #E3E8F1;
-    --max: 1120px;
+    --max: 1280px;
     --radius: 10px;
+    --padding-x: 28px;
+  }
+
+  @media (min-width: 1024px) {
+    :root {
+      --padding-x: 48px;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    :root {
+      --padding-x: 64px;
+    }
   }
 
   *,*::before,*::after{ box-sizing:border-box; }
@@ -681,6 +694,46 @@
     }
   }
 
+  @media (min-width:1200px) {
+    .hero {
+      gap: 80px;
+      padding-bottom: 120px;
+    }
+
+    section.wrap {
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+    section[style*="margin:64px 28px"] {
+      margin: 80px auto !important;
+      max-width: var(--max);
+    }
+
+    section[style*="padding:64px 28px"] {
+      padding-left: var(--padding-x) !important;
+      padding-right: var(--padding-x) !important;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+    }
+
+    h3 {
+      font-size: clamp(1.3rem, 2vw, 1.8rem);
+    }
+  }
+
+  @media (min-width:1400px) {
+    .hero {
+      gap: 120px;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 3.8rem);
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -843,7 +896,8 @@
   </div>
 </section>
 
-<section class="wrap" style="padding-top:56px; padding-bottom:56px; background:var(--navy-mist); border-radius:16px; margin:0 28px;">
+<section style="padding:56px var(--padding-x); background:var(--navy-mist); border-radius:16px; margin:0 auto;">
+  <div class="wrap">
   <div class="section-head" style="text-align:center; max-width:100%;">
     <div class="eyebrow">Real example</div>
     <h2 style="max-width:none;">What actually happens (timeline)</h2>
@@ -877,6 +931,7 @@
       <div style="font-weight:700; color:#5FEAA5; font-size:0.95rem; margin-top:16px;">Result:</div>
       <div style="color:var(--ink); font-weight:600;">$1,200 emergency job won. Customer secured before any competitor even saw the lead.</div>
     </div>
+  </div>
   </div>
 </section>
 
