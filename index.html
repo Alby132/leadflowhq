@@ -1211,28 +1211,31 @@
       biz: 'FastFlow HVAC',
       lines: [
         ["My AC just went out. Can you come tonight? It's an emergency.", 'visitor', 0],
-        ["I can help — we have emergency availability. Address and phone?", 'bot', 400, '4 seconds'],
-        ["Yes! 123 Oak Street, call me at 555-0187", 'visitor', 500],
+        ["I can help — we have emergency availability tonight. What time works?", 'bot', 400, '4 seconds'],
+        ["ASAP! How about 9pm?", 'visitor', 400],
+        ["Perfect. Confirming your appointment: Tonight 9pm Emergency AC repair at 123 Oak St. We'll call in 5 min.", 'bot', 400],
       ],
-      lead: { name: 'Mike', meta: '555-0187 — Emergency AC repair, $1,200+ job', time: '8 seconds' }
+      lead: { name: 'Mike', meta: '123 Oak St — Tonight 9pm Emergency AC repair — $1,200+ job', time: '8 seconds' }
     },
     {
       biz: 'Premier Plumbing Co',
       lines: [
         ["Do you have same-day service? I have a pipe leak under my sink.", 'visitor', 0],
-        ["Yes, we can do same-day. What's your location and best number?", 'bot', 400, '4 seconds'],
-        ["456 Maple Ave, call me at 555-0294", 'visitor', 500],
+        ["Yes! We can be there same-day. What time is best for you?", 'bot', 400, '4 seconds'],
+        ["This afternoon around 2pm?", 'visitor', 400],
+        ["Got it. Scheduled: Today 2pm Leak repair at 456 Maple Ave. Tech arriving with full tools.", 'bot', 400],
       ],
-      lead: { name: 'Sarah', meta: '555-0294 — Leak repair, same-day', time: '8 seconds' }
+      lead: { name: 'Sarah', meta: '456 Maple Ave — Today 2pm Leak repair — Ready to book', time: '8 seconds' }
     },
     {
       biz: 'Elite Electric',
       lines: [
         ["Need electrical inspection for my rental. Are you available this week?", 'visitor', 0],
-        ["We can schedule that. What day and what's your number?", 'bot', 400, '4 seconds'],
-        ["Thursday morning, 555-0456", 'visitor', 500],
+        ["Absolutely. What day works best for you?", 'bot', 400, '4 seconds'],
+        ["Thursday morning, 10am?", 'visitor', 400],
+        ["Perfect. Booked: Thursday 10am Electrical inspection at 456 Oak. Inspector confirmed.", 'bot', 400],
       ],
-      lead: { name: 'James', meta: '555-0456 — Electrical inspection Thursday', time: '8 seconds' }
+      lead: { name: 'James', meta: '456 Oak — Thursday 10am Electrical inspection — Appointment secured', time: '8 seconds' }
     }
   ];
 
