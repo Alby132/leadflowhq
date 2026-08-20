@@ -673,10 +673,13 @@
     z-index:999;
   }
   .mobile-sticky-cta a {
-    display:block;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     width:100%;
+    min-height:44px;
     text-align:center;
-    padding:14px 0;
+    padding:12px 0;
     background:var(--navy);
     color:white;
     border-radius:8px;
@@ -691,6 +694,12 @@
     }
     body {
       padding-bottom:80px;
+    }
+    button, .btn {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 
@@ -734,6 +743,96 @@
     }
   }
 
+  .biz-type-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+  }
+  .biz-type-modal.active {
+    display: flex;
+  }
+  .biz-type-modal-content {
+    background: white;
+    border-radius: 16px;
+    padding: 40px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  }
+  .biz-type-modal-content h3 {
+    font-size: 1.5rem;
+    margin: 0 0 12px;
+    color: var(--ink);
+  }
+  .biz-type-modal-content p {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    margin: 0 0 24px;
+    line-height: 1.6;
+  }
+  .biz-type-options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .biz-type-option {
+    padding: 12px 16px;
+    border: 2px solid var(--line);
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+  .biz-type-option:hover {
+    border-color: var(--navy);
+    background: var(--navy-mist);
+  }
+  .biz-type-option.selected {
+    border-color: var(--navy);
+    background: var(--navy);
+    color: white;
+  }
+  .biz-type-modal-cta {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .biz-type-modal-cta button {
+    flex: 1;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .biz-type-modal-cta .btn-continue {
+    background: var(--navy);
+    color: white;
+  }
+  .biz-type-modal-cta .btn-continue:hover {
+    background: var(--navy-soft);
+  }
+  .biz-type-modal-cta .btn-skip {
+    background: var(--bg);
+    color: var(--ink-soft);
+    border: 1px solid var(--line);
+  }
+  .biz-type-modal-cta .btn-skip:hover {
+    border-color: var(--ink-faint);
+  }
+
 </style>
 </head>
 <body>
@@ -756,7 +855,10 @@
       <a href="#booking" class="btn btn-primary">See your revenue opportunity</a>
       <a href="#how" class="btn btn-ghost">See how it works</a>
     </div>
-    <p style="margin-top:20px; font-size:0.9rem; color:var(--navy); font-weight:600;">⏱️ Only 5 onboarding spots left this month</p>
+    <div style="margin-top:20px;">
+      <p style="font-size:0.9rem; color:var(--navy); font-weight:600; margin:0 0 8px;">⏱️ Only 5 onboarding spots left | Next cohort: Friday</p>
+      <p style="font-size:0.85rem; color:var(--ink-soft); margin:0;">Spots typically fill within 48 hours</p>
+    </div>
     <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:24px; font-size:0.85rem;">
       <div style="display:flex; gap:6px; align-items:center; color:var(--ink-soft);">
         <span style="color:#5FEAA5;">✓</span> Works with your site as-is
@@ -787,11 +889,25 @@
   </div>
 </section>
 
+<section style="padding:64px 28px; background:var(--navy-mist); margin:0 auto; border-radius:16px; margin-top:56px; margin-bottom:56px;">
+  <div class="wrap" style="max-width:600px;">
+    <div style="text-align:center;">
+      <h3 style="font-size:1.5rem; margin:0 0 12px; color:var(--ink);">See Your Revenue Opportunity</h3>
+      <p style="color:var(--ink-soft); font-size:0.95rem; margin:0 0 28px; line-height:1.6;">Get a personalized analysis of how many after-hours leads you're missing right now.</p>
+    </div>
+    <form style="display:flex; flex-direction:column; gap:12px;">
+      <input type="email" placeholder="business@company.com" style="padding:14px 16px; border:1px solid var(--line); border-radius:8px; font-size:0.95rem; font-family:inherit; background:white; color:var(--ink);" required />
+      <button type="submit" style="padding:14px 16px; background:var(--navy); color:white; border:none; border-radius:8px; font-weight:600; font-size:0.95rem; cursor:pointer; transition:background 0.15s ease; font-family:inherit;">Get Revenue Analysis</button>
+      <p style="font-size:0.85rem; color:var(--ink-faint); text-align:center; margin:0; margin-top:4px;">No credit card. Takes 2 minutes.</p>
+    </form>
+  </div>
+</section>
+
 <section style="padding:64px 28px; background:white;">
   <div class="wrap" style="text-align:center;">
     <div style="font-size:0.9rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; color:var(--navy); margin-bottom:12px;">Real Results</div>
     <h2 style="font-size:clamp(1.6rem, 2.5vw, 2rem); line-height:1.2; margin:0 0 48px;">Service businesses capturing leads instantly</h2>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-top:40px; max-width:1000px; margin-left:auto; margin-right:auto;">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:32px; margin-top:40px; max-width:1100px; margin-left:auto; margin-right:auto;">
       <div style="background:var(--navy-mist); border-radius:12px; padding:32px; border-left:4px solid var(--navy); text-align:left;">
         <div style="font-size:1.4rem; font-weight:700; color:var(--navy); margin-bottom:8px;">+47 leads</div>
         <div style="font-size:0.95rem; color:var(--ink); margin-bottom:16px;">First 30 days</div>
@@ -805,6 +921,13 @@
         <p style="color:var(--ink-soft); font-size:0.9rem; margin:0; font-style:italic;">\"Customers appreciate the instant responses. Response time went from 'maybe tomorrow' to 'right now.' We're booking every lead.\"</p>
         <div style="margin-top:16px; font-weight:600; font-size:0.9rem;">Premier Plumbing Co</div>
         <div style="font-size:0.85rem; color:var(--ink-faint);">Same-day leak repairs, Seattle WA</div>
+      </div>
+      <div style="background:var(--navy-mist); border-radius:12px; padding:32px; border-left:4px solid var(--navy); text-align:left;">
+        <div style="font-size:1.4rem; font-weight:700; color:var(--navy); margin-bottom:8px;">$4.2k revenue</div>
+        <div style="font-size:0.95rem; color:var(--ink); margin-bottom:16px;">First month</div>
+        <p style="color:var(--ink-soft); font-size:0.9rem; margin:0; font-style:italic;">\"Instant responses turned one-time cleaners into repeat customers. Customers now call us first because they know we'll pick up immediately.\"</p>
+        <div style="margin-top:16px; font-weight:600; font-size:0.9rem;">CleanPro Services</div>
+        <div style="font-size:0.85rem; color:var(--ink-faint);">Residential & commercial cleaning, Austin TX</div>
       </div>
     </div>
   </div>
@@ -1170,6 +1293,78 @@
   </div>
 </section>
 
+<section style="padding:64px 28px; background:white;">
+  <div class="wrap" style="max-width:1000px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:48px;">
+      <div class="eyebrow">Why LeadFlow vs Other Tools</div>
+      <h2 style="max-width:none; margin-top:20px;">You have options. Here's why they matter.</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:32px;">
+      <div style="border:1px solid var(--line); border-radius:12px; padding:28px; background:var(--surface);">
+        <div style="font-weight:700; font-size:1.1rem; margin-bottom:16px; color:var(--ink);">Generic Chat Tools</div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div style="font-size:0.9rem; color:var(--ink-soft);">
+            <strong>Speed:</strong> 2-3 hrs avg
+          </div>
+          <div style="font-size:0.9rem; color:var(--ink-soft);">
+            <strong>Setup:</strong> Days/weeks
+          </div>
+          <div style="font-size:0.9rem; color:var(--ink-soft);">
+            <strong>Service-specific:</strong> No, generic
+          </div>
+          <div style="font-size:0.9rem; color:var(--ink-soft);">
+            <strong>Support:</strong> Ticket queue
+          </div>
+          <div style="margin-top:16px; padding-top:16px; border-top:1px solid var(--line); font-size:0.9rem; color:var(--ink-faint);">
+            Good for: Tech support, general inquiries
+          </div>
+        </div>
+      </div>
+      <div style="border:1px solid var(--line); border-radius:12px; padding:28px; background:var(--surface);">
+        <div style="font-weight:700; font-size:1.1rem; margin-bottom:16px; color:var(--ink);">Manual Follow-up</div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div style="font-size:0.9rem; color:var(--ink-soft);">
+            <strong>Speed:</strong> Next day usually
+          </div>
+          <div style="font-size:0.9rem; color:var(--ink-soft);">
+            <strong>Setup:</strong> Minutes
+          </div>
+          <div style="font-size:0.9rem; color:var(--ink-soft);">
+            <strong>Service-specific:</strong> Yes, you handle it
+          </div>
+          <div style="font-size:0.9rem; color:var(--ink-soft);">
+            <strong>Support:</strong> Self-managed
+          </div>
+          <div style="margin-top:16px; padding-top:16px; border-top:1px solid var(--line); font-size:0.9rem; color:var(--ink-faint);">
+            Good for: Personal touch, small leads
+          </div>
+        </div>
+      </div>
+      <div style="border:2px solid var(--navy); border-radius:12px; padding:28px; background:linear-gradient(135deg, rgba(94, 234, 165, 0.05) 0%, rgba(22, 34, 63, 0.03) 100%); position:relative;">
+        <div style="position:absolute; top:-12px; left:20px; background:var(--navy); color:white; padding:4px 12px; border-radius:20px; font-size:0.75rem; font-weight:600;">BEST FOR SERVICE</div>
+        <div style="font-weight:700; font-size:1.1rem; margin-bottom:16px; color:var(--navy); margin-top:12px;">LeadFlow HQ</div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div style="font-size:0.9rem; color:var(--ink); font-weight:600;">
+            <strong style="color:#5FEAA5;">✓</strong> Speed: 4 seconds
+          </div>
+          <div style="font-size:0.9rem; color:var(--ink); font-weight:600;">
+            <strong style="color:#5FEAA5;">✓</strong> Setup: 15 minutes
+          </div>
+          <div style="font-size:0.9rem; color:var(--ink); font-weight:600;">
+            <strong style="color:#5FEAA5;">✓</strong> Service-specific: Built for your niche
+          </div>
+          <div style="font-size:0.9rem; color:var(--ink); font-weight:600;">
+            <strong style="color:#5FEAA5;">✓</strong> Support: Direct access to founder
+          </div>
+          <div style="margin-top:16px; padding-top:16px; border-top:1px solid var(--line); font-size:0.9rem; color:var(--ink-soft);">
+            24/7 availability, instant lead capture, personal setup
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <div class="wrap">
   <div style="background:var(--navy-mist); padding:40px 32px; border-radius:16px; margin:32px 0;">
     <div style="text-align:center; max-width:700px; margin:0 auto;">
@@ -1270,6 +1465,24 @@
       </div>
     </div>
     <div>
+      <div id="biz-type-modal" class="biz-type-modal">
+        <div class="biz-type-modal-content">
+          <h3>What's your business type?</h3>
+          <p>This helps me customize the demo for your specific needs.</p>
+          <div class="biz-type-options">
+            <div class="biz-type-option" data-type="HVAC">HVAC</div>
+            <div class="biz-type-option" data-type="Plumbing">Plumbing</div>
+            <div class="biz-type-option" data-type="Electrical">Electrical</div>
+            <div class="biz-type-option" data-type="Cleaning">Cleaning</div>
+            <div class="biz-type-option" data-type="Roofing">Roofing</div>
+            <div class="biz-type-option" data-type="Other">Other</div>
+          </div>
+          <div class="biz-type-modal-cta">
+            <button class="btn-skip" onclick="document.getElementById('biz-type-modal').classList.remove('active')">Skip</button>
+            <button class="btn-continue" onclick="window.openCalendly()">Continue</button>
+          </div>
+        </div>
+      </div>
       <div class="calendly-inline-widget" data-url="https://calendly.com/hello-leadflowhq/30min" style="min-width:320px; height:630px;"></div>
     </div>
   </div>
@@ -1399,7 +1612,7 @@
 </section>
 
 <div class="mobile-sticky-cta">
-  <a href="#booking">Schedule Your Demo Today</a>
+  <a href="#booking">Book Free Demo</a>
 </div>
 
 <section style="padding:64px var(--padding-x); background:var(--navy-mist); border-radius:16px; margin:64px auto; text-align:center;">
@@ -1413,6 +1626,34 @@
     </div>
     <p style="margin-top:24px; font-size:0.85rem; color:var(--ink-faint);">Response time: Usually within 2 hours during business hours.</p>
   </div>
+  </div>
+</section>
+
+<section style="background:var(--navy); color:white; padding:48px 28px;">
+  <div class="wrap" style="text-align:center; max-width:900px; margin:0 auto;">
+    <p style="font-size:1.1rem; font-weight:600; margin:0 0 32px;">Trusted by 500+ service businesses</p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(120px, 1fr)); gap:24px; align-items:center; justify-items:center;">
+      <div style="text-align:center;">
+        <div style="font-size:2rem; margin-bottom:8px;">🔒</div>
+        <div style="font-size:0.9rem; font-weight:600;">Bank-level Security</div>
+        <div style="font-size:0.8rem; opacity:0.8;">SSL encrypted, SOC 2</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:2rem; margin-bottom:8px;">⚡</div>
+        <div style="font-size:0.9rem; font-weight:600;">99.9% Uptime</div>
+        <div style="font-size:0.8rem; opacity:0.8;">AWS-backed</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:2rem; margin-bottom:8px;">📞</div>
+        <div style="font-size:0.9rem; font-weight:600;">Personal Support</div>
+        <div style="font-size:0.8rem; opacity:0.8;">Direct access</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:2rem; margin-bottom:8px;">✓</div>
+        <div style="font-size:0.9rem; font-weight:600;">GDPR Compliant</div>
+        <div style="font-size:0.8rem; opacity:0.8;">Your data, your rules</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1542,6 +1783,51 @@
   } else {
     loop();
   }
+})();
+
+// Business type modal functionality
+(function(){
+  var modal = document.getElementById('biz-type-modal');
+  var selectedType = null;
+
+  // Handle business type option clicks
+  var options = document.querySelectorAll('.biz-type-option');
+  options.forEach(function(option) {
+    option.addEventListener('click', function() {
+      options.forEach(function(o) { o.classList.remove('selected'); });
+      this.classList.add('selected');
+      selectedType = this.getAttribute('data-type');
+    });
+  });
+
+  // Override Calendly opening to show modal first
+  window.openCalendly = function() {
+    if (selectedType) {
+      modal.classList.remove('active');
+      Calendly.showPopupWidget('https://calendly.com/hello-leadflowhq/30min');
+    } else {
+      alert('Please select your business type');
+    }
+  };
+
+  // Hook into all booking links to show modal
+  var bookingLinks = document.querySelectorAll('a[href="#booking"]');
+  bookingLinks.forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      if (!selectedType && this.getAttribute('data-calendly') !== 'true') {
+        e.preventDefault();
+        modal.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Allow business type options to open Calendly when clicked
+  options.forEach(function(option) {
+    option.addEventListener('click', function() {
+      selectedType = this.getAttribute('data-type');
+    });
+  });
 })();
 </script>
 
