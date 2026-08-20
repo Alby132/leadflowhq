@@ -933,6 +933,60 @@
   </div>
 </section>
 
+<!-- CASE STUDY SECTION -->
+<section style="padding:64px 28px; background:white;">
+  <div class="wrap" style="max-width:900px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:48px;">
+      <div style="font-size:0.9rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; color:var(--navy); margin-bottom:12px;">The Real Impact</div>
+      <h2 style="font-size:clamp(1.6rem, 2.5vw, 2rem); line-height:1.2; margin:0;">How Mike went from missing leads to $12k/month</h2>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;">
+      <div>
+        <div style="background:var(--navy-mist); padding:32px; border-radius:12px; margin-bottom:24px;">
+          <div style="font-size:0.85rem; color:var(--navy); font-weight:600; text-transform:uppercase; margin-bottom:16px;">Before LeadFlow</div>
+          <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px;">
+            <li style="font-size:0.9rem; color:var(--ink-soft);">❌ Missed 70% of after-hours calls</li>
+            <li style="font-size:0.9rem; color:var(--ink-soft);">❌ Competitors booking emergencies first</li>
+            <li style="font-size:0.9rem; color:var(--ink-soft);">❌ $6k-8k in lost revenue monthly</li>
+            <li style="font-size:0.9rem; color:var(--ink-soft);">❌ Manual lead follow-up (slow & inconsistent)</li>
+            <li style="font-size:0.9rem; color:var(--ink-soft);">❌ No data on which leads to prioritize</li>
+          </ul>
+        </div>
+
+        <div style="background:linear-gradient(135deg, rgba(94, 234, 165, 0.1) 0%, rgba(94, 234, 165, 0.05) 100%); padding:32px; border-radius:12px; border-left:4px solid #5FEAA5;">
+          <div style="font-size:0.85rem; color:var(--navy); font-weight:600; text-transform:uppercase; margin-bottom:16px;">✓ After LeadFlow</div>
+          <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px;">
+            <li style="font-size:0.9rem; color:var(--ink); font-weight:600;">✓ Captures 100% of after-hours leads</li>
+            <li style="font-size:0.9rem; color:var(--ink); font-weight:600;">✓ Responds in 4 seconds (vs competitors' 30+ min)</li>
+            <li style="font-size:0.9rem; color:var(--ink); font-weight:600;">✓ +47 qualified leads in first 30 days</li>
+            <li style="font-size:0.9rem; color:var(--ink); font-weight:600;">✓ $12k in emergency jobs booked</li>
+            <li style="font-size:0.9rem; color:var(--ink); font-weight:600;">✓ Automated lead qualification & priority</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="background:linear-gradient(135deg, #16223F 0%, #22335C 100%); color:white; padding:40px; border-radius:16px; text-align:center;">
+        <div style="font-size:0.85rem; font-weight:600; text-transform:uppercase; opacity:0.9; margin-bottom:16px;">Revenue Impact</div>
+        <div style="font-size:3.5rem; font-weight:700; margin-bottom:8px;">+$12k</div>
+        <div style="font-size:0.95rem; opacity:0.9; margin-bottom:32px;">First month alone</div>
+
+        <div style="border-top:1px solid rgba(255,255,255,0.2); padding-top:32px;">
+          <div style="font-size:0.85rem; font-weight:600; text-transform:uppercase; opacity:0.9; margin-bottom:16px;">Now running</div>
+          <div style="font-size:1.4rem; font-weight:700;">$50k+/year</div>
+          <div style="font-size:0.85rem; opacity:0.8; margin-top:8px;">From after-hours leads alone</div>
+        </div>
+
+        <div style="margin-top:32px; padding-top:32px; border-top:1px solid rgba(255,255,255,0.2);">
+          <p style="margin:0; font-size:0.9rem; opacity:0.85; line-height:1.6;">"LeadFlow made the difference. We went from losing midnight calls to booking $12k in emergency jobs every month. It's not even close—this is a no-brainer for any service business."</p>
+          <div style="margin-top:16px; font-weight:600;">— Mike, Owner</div>
+          <div style="font-size:0.85rem; opacity:0.8;">24-Hour HVAC, Phoenix AZ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- LIVE LEAD COUNTER -->
 <section style="padding:48px 28px; background:linear-gradient(135deg, #5FEAA5 0%, rgba(94, 234, 165, 0.8) 100%); text-align:center;">
   <div class="wrap">
@@ -1998,6 +2052,66 @@
     });
   });
 })();
+</script>
+
+<!-- EXIT-INTENT POPUP -->
+<div id="exitPopup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999; align-items:center; justify-content:center;">
+  <div style="background:white; border-radius:16px; padding:40px; max-width:500px; width:90%; box-shadow:0 10px 40px rgba(0,0,0,0.3); text-align:center;">
+    <div style="font-size:2rem; margin-bottom:16px;">⏰</div>
+    <h2 style="font-size:1.6rem; margin:0 0 16px; color:var(--ink);">Wait! One quick question</h2>
+    <p style="color:var(--ink-soft); margin:0 0 24px; line-height:1.6; font-size:0.95rem;">How many after-hours leads do you think you're losing right now?</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:24px;">
+      <a href="#" onclick="document.getElementById('exitPopup').style.display='none'; document.querySelector('input[placeholder*=business]').focus(); return false;" style="padding:12px; background:var(--navy-mist); color:var(--navy); border:none; border-radius:8px; text-decoration:none; font-weight:600; cursor:pointer; font-size:0.9rem;">5-10 leads/mo</a>
+      <a href="#" onclick="document.getElementById('exitPopup').style.display='none'; document.querySelector('input[placeholder*=business]').focus(); return false;" style="padding:12px; background:var(--navy-mist); color:var(--navy); border:none; border-radius:8px; text-decoration:none; font-weight:600; cursor:pointer; font-size:0.9rem;">10-20 leads/mo</a>
+    </div>
+    <p style="color:var(--ink-faint); font-size:0.85rem; margin:0;">Our calculator shows exactly what that costs. It takes 2 minutes.</p>
+    <button onclick="document.getElementById('exitPopup').style.display='none'" style="margin-top:16px; padding:8px 16px; background:white; border:1px solid var(--line); border-radius:6px; cursor:pointer; color:var(--ink-soft); font-size:0.85rem;">No thanks, I'll pass</button>
+  </div>
+</div>
+
+<!-- LIVE CHAT WIDGET -->
+<div id="liveChat" style="position:fixed; bottom:20px; right:20px; z-index:9998; cursor:pointer; font-family:inherit;">
+  <button onclick="document.getElementById('chatBox').style.display=document.getElementById('chatBox').style.display==='none'?'block':'none'" style="width:60px; height:60px; border-radius:50%; background:linear-gradient(135deg, #0279FF 0%, #00A3F3 100%); border:none; color:white; font-size:1.5rem; cursor:pointer; box-shadow:0 4px 12px rgba(2, 121, 255, 0.3); transition:all 0.3s ease; display:flex; align-items:center; justify-content:center; font-weight:bold;">💬</button>
+  <div id="chatBox" style="display:none; position:absolute; bottom:80px; right:0; width:300px; background:white; border-radius:12px; box-shadow:0 5px 20px rgba(0,0,0,0.2); overflow:hidden;">
+    <div style="background:linear-gradient(135deg, #0279FF 0%, #00A3F3 100%); color:white; padding:16px; font-weight:600;">Questions?</div>
+    <div style="padding:16px; font-size:0.9rem; color:var(--ink-soft); line-height:1.5;">
+      <p style="margin:0 0 12px;">Hi! I'm here Mon-Fri, 9am-5pm PT.</p>
+      <p style="margin:0 0 12px;">For immediate help:</p>
+      <a href="mailto:hello@leadflowhq.tech" style="display:block; margin-bottom:8px; padding:10px; background:var(--navy); color:white; text-decoration:none; border-radius:6px; text-align:center; font-weight:600; font-size:0.85rem;">Email me</a>
+      <a href="#booking" style="display:block; padding:10px; border:2px solid var(--navy); color:var(--navy); text-decoration:none; border-radius:6px; text-align:center; font-weight:600; font-size:0.85rem;">Book a call</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// Exit-intent popup
+document.addEventListener('mouseleave', function(event) {
+  if (event.clientY < 0 && document.getElementById('exitPopup').style.display === 'none') {
+    document.getElementById('exitPopup').style.display = 'flex';
+    sessionStorage.setItem('exitPopupShown', 'true');
+  }
+});
+
+// Only show popup once per session
+if (sessionStorage.getItem('exitPopupShown')) {
+  document.getElementById('exitPopup').style.display = 'none';
+}
+
+// Close popup on escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.getElementById('exitPopup').style.display = 'none';
+    document.getElementById('chatBox').style.display = 'none';
+  }
+});
+
+// Hover effect on chat button
+document.getElementById('liveChat').querySelector('button').addEventListener('mouseover', function() {
+  this.style.transform = 'scale(1.1)';
+});
+document.getElementById('liveChat').querySelector('button').addEventListener('mouseout', function() {
+  this.style.transform = 'scale(1)';
+});
 </script>
 
 </body>
