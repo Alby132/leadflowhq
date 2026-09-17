@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LeadFlow HQ — Turn visitors into booked appointments</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<style>
+
+  :root{
+    --bg: #FAFAF8;
+    --surface: #FFFFFF;
+    --ink: #0E1116;
+    --ink-soft: #5B6472;
+    --ink-faint: #6B7280;
+    --line: #E6E6E1;
+    --navy: #16223F;
+    --navy-soft: #22335C;
+    --navy-mist: #EEF1F6;
+    --navy-mist-2: #E3E8F1;
+    --max: 1280px;
+    --radius: 10px;
+    --padding-x: 28px;
+  }
+
+  @media (min-width: 1024px) {
+    :root {
+      --padding-x: 48px;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    :root {
+      --padding-x: 64px;
+    }
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+  }
+
+  h1,h2,h3{
+    font-family:'Space Grotesk',sans-serif;
+    letter-spacing:-0.02em;
+    margin:0;
+    color:var(--ink);
+  }
+
+  a{ color:inherit; }
+
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--navy);
+    font-weight:500;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:14px;
+    height:1px;
+    background:var(--navy);
+    display:inline-block;
+  }
+  .section-head{
+    display:flex;
+    flex-direction:column;
+    gap:32px;
+  }
+  .section-head h2{
+    font-size:clamp(1.9rem, 3.6vw, 2.55rem);
+    line-height:1.14;
+    max-width:20ch;
+  }
+
+  .wrap{
+    max-width:var(--max);
+    margin:0 auto;
+    padding-left:28px;
+    padding-right:28px;
+  }
+
+  section{ padding-top:32px; padding-bottom:96px; }
+  @media (max-width:720px){ section{ padding-top:24px; padding-bottom:64px; } .section-head{ gap:24px; } }
+
+  button, .btn{
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:0.95rem;
+    cursor:pointer;
+    border:none;
+    border-radius:8px;
+    padding:14px 24px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:transform .15s ease, background .15s ease, box-shadow .15s ease;
+  }
+  button:focus-visible, a:focus-visible{
+    outline:2px solid var(--navy);
+    outline-offset:3px;
+  }
+
+  .btn-primary{
+    background:var(--navy);
+    color:#fff;
+  }
+  .btn-primary:hover{ background:var(--navy-soft); transform:translateY(-1px); }
+
+  .btn-ghost{
+    background:transparent;
+    color:var(--ink);
+    border:1px solid var(--line);
+  }
+  .btn-ghost:hover{ border-color:var(--ink-faint); }
+
+  .btn-invert{
+    background:#fff;
+    color:var(--navy);
+  }
+  .btn-invert:hover{ background:var(--navy-mist); transform:translateY(-1px); }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(250,250,248,0.85);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:18px 28px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .logo{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:1.05rem;
+    display:flex;
+    align-items:center;
+    gap:9px;
+  }
+  .logo-mark{
+    width:20px;height:20px;
+    border-radius:5px;
+    background:var(--navy);
+    position:relative;
+    flex-shrink:0;
+  }
+  .logo-mark::after{
+    content:'';
+    position:absolute;
+    left:5px; top:9px;
+    width:6px; height:6px;
+    border-radius:50%;
+    background:#fff;
+  }
+  nav .btn-primary{ padding:10px 18px; font-size:0.88rem; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding-top:76px;
+    padding-bottom:96px;
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:56px;
+    align-items:center;
+  }
+  @media (max-width:900px){
+    .hero{ grid-template-columns:1fr; padding-top:48px; }
+  }
+
+  .hero h1{
+    font-size:clamp(2.1rem, 4.4vw, 3.35rem);
+    line-height:1.08;
+    margin:20px 0 22px;
+  }
+  .hero .sub{
+    font-size:1.08rem;
+    color:var(--ink-soft);
+    max-width:46ch;
+    margin-bottom:32px;
+  }
+  .hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; }
+
+  /* ---------- CHAT WIDGET MOCK (signature element) ---------- */
+  .widget-card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:16px;
+    box-shadow:0 1px 2px rgba(20,25,35,0.04), 0 18px 40px -20px rgba(20,25,35,0.18);
+    overflow:hidden;
+  }
+  .widget-head{
+    background:var(--navy);
+    color:#fff;
+    padding:14px 18px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .widget-head .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:#5FEAA5;
+  }
+  .widget-head .name{ font-weight:600; font-size:0.9rem; }
+  .widget-head .biz{ font-size:0.78rem; color:#B8C0D6; margin-left:auto; }
+
+  .widget-body{
+    padding:18px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    min-height:290px;
+    background:linear-gradient(180deg, #FCFCFB 0%, #FAFAF8 100%);
+  }
+
+  .bubble{
+    max-width:78%;
+    padding:10px 13px;
+    border-radius:12px;
+    font-size:0.87rem;
+    line-height:1.42;
+    opacity:0;
+    transform:translateY(6px);
+    animation:rise .38s ease forwards;
+  }
+  .bubble.visitor{
+    align-self:flex-end;
+    background:var(--navy-mist);
+    color:var(--ink);
+    border-bottom-right-radius:3px;
+  }
+  .bubble.bot{
+    align-self:flex-start;
+    background:#fff;
+    border:1px solid var(--line);
+    color:var(--ink);
+    border-bottom-left-radius:3px;
+  }
+  @keyframes rise{ to{ opacity:1; transform:translateY(0); } }
+
+  .lead-ticket{
+    margin-top:auto;
+    background:var(--navy);
+    color:#fff;
+    border-radius:10px;
+    padding:12px 14px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:0.83rem;
+    opacity:0;
+    transform:translateY(6px);
+    animation:rise .4s ease forwards;
+  }
+  .lead-ticket .check{
+    width:18px;height:18px;
+    border-radius:50%;
+    background:#5FEAA5;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .lead-ticket .check svg{ width:10px; height:10px; }
+  .lead-ticket .meta{ color:#B8C0D6; font-size:0.74rem; margin-top:2px; }
+
+  /* ---------- PROBLEM ---------- */
+  .problem{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background:var(--surface);
+  }
+  .problem-grid{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:56px;
+    align-items:start;
+  }
+  @media (max-width:900px){ .problem-grid{ grid-template-columns:1fr; gap:28px; } }
+  .problem h2{ margin-bottom:16px; }
+  .problem p{ color:var(--ink-soft); font-size:1.1rem; line-height:1.6; max-width:52ch; }
+
+  .drop-off{
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:22px;
+    background:var(--bg);
+  }
+  .drop-off .row{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:10px 0;
+    border-bottom:1px dashed var(--line);
+    font-size:0.9rem;
+  }
+  .drop-off .row:last-child{ border-bottom:none; }
+  .drop-off .time{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.75rem;
+    color:var(--ink-faint);
+    width:52px;
+    flex-shrink:0;
+  }
+  .drop-off .fade{ color:var(--ink-faint); }
+  .drop-off .strike{ text-decoration:line-through; color:var(--ink-faint); }
+
+  /* ---------- HOW IT WORKS ---------- */
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:0;
+    margin-top:52px;
+    border:1px solid var(--line);
+    border-radius:14px;
+    overflow:hidden;
+  }
+  @media (max-width:800px){ .steps{ grid-template-columns:1fr; } }
+  .step{
+    padding:36px 30px;
+    background:var(--surface);
+    position:relative;
+  }
+  .step + .step{ border-left:1px solid var(--line); }
+  @media (max-width:800px){
+    .step + .step{ border-left:none; border-top:1px solid var(--line); }
+  }
+  .step .num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.78rem;
+    color:var(--navy);
+    background:var(--navy-mist);
+    width:26px;height:26px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:20px;
+  }
+  .step h3{ font-size:1.22rem; margin-bottom:10px; }
+  .step p{ color:var(--ink-soft); font-size:0.98rem; line-height:1.55; margin:0; }
+
+  .demo-note{
+    font-size:0.85rem;
+    color:var(--ink-faint);
+  }
+
+  .typing-dots{ display:inline-flex; gap:3px; align-items:center; padding:2px 4px; }
+  .typing-dots span{
+    width:5px;height:5px;border-radius:50%;
+    background:var(--ink-faint);
+    animation:blink 1.1s infinite ease-in-out;
+  }
+  .typing-dots span:nth-child(2){ animation-delay:.15s; }
+  .typing-dots span:nth-child(3){ animation-delay:.3s; }
+  @keyframes blink{ 0%,80%,100%{ opacity:.25; } 40%{ opacity:1; } }
+
+  /* ---------- USE CASES ---------- */
+  .use-cases{ text-align:left; }
+  .use-cases .section-head{ text-align:left; }
+  .uc-primary{
+    margin-top:44px;
+    border:1px solid var(--line);
+    border-radius:16px;
+    background:var(--surface);
+    padding:38px;
+    display:flex;
+    align-items:flex-start;
+    gap:26px;
+  }
+  @media (max-width:640px){
+    .uc-primary{ flex-direction:column; gap:18px; padding:28px; }
+  }
+  .uc-primary-icon{
+    width:52px; height:52px;
+    border-radius:12px;
+    background:var(--navy-mist);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .uc-primary-icon svg{ width:26px; height:26px; stroke:var(--navy); }
+  .uc-primary-title{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:1.3rem;
+    margin-bottom:8px;
+  }
+  .uc-primary-copy{ color:var(--ink-soft); font-size:1.02rem; line-height:1.6; max-width:56ch; margin:0; }
+
+  .uc-secondary{
+    margin-top:22px;
+    padding-top:22px;
+    border-top:1px dashed var(--line);
+    display:flex;
+    align-items:center;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .uc-secondary-label{
+    font-size:0.85rem;
+    color:var(--ink-faint);
+  }
+  .uc-tags{ display:flex; gap:10px; flex-wrap:wrap; }
+  .uc-tag{
+    font-size:0.83rem;
+    color:var(--ink-soft);
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:6px 14px;
+  }
+
+  /* ---------- LIVE DEMO LINK ---------- */
+  .live-demo-link{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-size:0.85rem;
+    font-weight:600;
+    color:var(--navy);
+    text-decoration:none;
+    margin-top:4px;
+  }
+  .live-demo-link svg{ width:14px; height:14px; stroke:var(--navy); }
+  .live-demo-link:hover{ text-decoration:underline; }
+
+  /* ---------- PROOF / TRUST ---------- */
+  .proof{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background:var(--surface);
+  }
+  .proof-grid{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:48px;
+    align-items:start;
+    margin-top:44px;
+  }
+  @media (max-width:900px){ .proof-grid{ grid-template-columns:1fr; gap:28px; } }
+
+  .founder-note{
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:32px;
+    background:var(--bg);
+  }
+  .founder-avatar{
+    width:42px; height:42px;
+    border-radius:50%;
+    background:var(--navy);
+    color:#fff;
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:1rem;
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:16px;
+  }
+  .founder-note p{
+    font-size:1.02rem;
+    line-height:1.6;
+    color:var(--ink);
+    margin:0 0 16px;
+  }
+  .founder-note p:last-of-type{ margin-bottom:0; }
+  .founder-sign{
+    font-size:0.85rem;
+    color:var(--ink-faint);
+    margin-top:16px;
+  }
+
+  .trust-chips{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .trust-chip{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:20px;
+    background:var(--bg);
+  }
+  .trust-chip-icon{
+    width:36px; height:36px;
+    border-radius:9px;
+    background:var(--navy-mist);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .trust-chip-icon svg{ width:18px; height:18px; stroke:var(--navy); }
+  .trust-chip-title{ font-weight:600; font-size:0.98rem; margin-bottom:4px; }
+  .trust-chip-copy{ color:var(--ink-soft); font-size:0.9rem; line-height:1.5; margin:0; }
+
+  .proof-demo-cta{
+    margin-top:8px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+
+
+  /* ---------- FAQ ---------- */
+  .faq-list{
+    max-width:760px;
+    margin-top:44px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .faq-item{
+    border:1px solid var(--line);
+    border-radius:12px;
+    background:var(--surface);
+    overflow:hidden;
+  }
+  .faq-item summary{
+    padding:18px 22px;
+    cursor:pointer;
+    font-weight:600;
+    font-size:0.98rem;
+    list-style:none;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+  }
+  .faq-item summary::-webkit-details-marker{ display:none; }
+  .faq-item summary::after{
+    content:'+';
+    font-family:'Space Grotesk',sans-serif;
+    font-size:1.3rem;
+    color:var(--ink-faint);
+    flex-shrink:0;
+    transition:transform .15s ease;
+  }
+  .faq-item[open] summary::after{ content:'−'; }
+  .faq-item summary:focus-visible{ outline:2px solid var(--navy); outline-offset:-2px; }
+  .faq-item .faq-answer{
+    padding:0 22px 20px;
+    color:var(--ink-soft);
+    font-size:0.94rem;
+    line-height:1.6;
+    margin:0;
+  }
+
+  /* ---------- PRICING ---------- */
+  .plan-single{
+    max-width:520px;
+    margin:48px auto 0;
+    border:1px solid var(--navy);
+    border-radius:16px;
+    padding:40px 36px;
+    background:var(--surface);
+    box-shadow:0 18px 40px -24px rgba(22,34,63,0.35);
+  }
+  .plan-single-head{ margin-bottom:28px; }
+  @media (max-width:640px){
+    .plan-single{ padding:28px 24px; }
+    .price-main{ font-size:2.1rem; }
+  }
+  .plan-single .name{ font-weight:600; font-size:1.05rem; margin-bottom:14px; }
+  .price-row{
+    display:flex;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .price-main{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:2.6rem;
+    font-weight:700;
+  }
+  .price-main small{
+    font-family:'Inter',sans-serif;
+    font-size:1rem;
+    font-weight:500;
+    color:var(--ink-soft);
+  }
+  .price-plus{ color:var(--ink-faint); font-size:1.3rem; }
+  .price-setup{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:1.3rem;
+    font-weight:700;
+    color:var(--ink-soft);
+  }
+  .price-setup small{
+    font-family:'Inter',sans-serif;
+    font-size:0.82rem;
+    font-weight:500;
+    color:var(--ink-faint);
+  }
+  .plan ul, .plan-single ul{ list-style:none; padding:0; margin:0 0 26px; display:flex; flex-direction:column; gap:13px; }
+  .plan li, .plan-single li{ font-size:0.95rem; color:var(--ink-soft); display:flex; gap:9px; align-items:flex-start; }
+  .plan li svg, .plan-single li svg{ width:16px; height:16px; stroke:var(--navy); flex-shrink:0; margin-top:2px; }
+  .plan .btn{ margin-top:auto; width:100%; justify-content:center; }
+
+  /* ---------- PRIVACY NOTE ---------- */
+  .privacy-note{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    justify-content:center;
+    text-align:center;
+    color:var(--ink-faint);
+    font-size:0.85rem;
+    padding-bottom:56px;
+  }
+  .privacy-note svg{ width:16px; height:16px; stroke:var(--ink-faint); flex-shrink:0; }
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{
+    background:var(--navy);
+    color:#fff;
+    text-align:center;
+    border-radius:20px;
+    margin:0 28px;
+    padding:64px 28px;
+  }
+  .final-cta h2{ color:#fff; font-size:clamp(1.7rem,3.4vw,2.4rem); margin-bottom:14px; }
+  .final-cta p{ color:#B8C0D6; margin-bottom:30px; }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    border-top:1px solid var(--line);
+    padding:36px 0;
+  }
+  .foot-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .foot-inner .logo{ font-size:0.95rem; }
+  footer .contact{ font-size:0.85rem; color:var(--ink-soft); }
+  footer .copyright{ font-size:0.78rem; color:var(--ink-faint); margin-top:6px; }
+
+  @media (prefers-reduced-motion: reduce){
+    .bubble, .lead-ticket{ animation:none !important; opacity:1 !important; transform:none !important; }
+    .typing-dots span{ animation:none !important; }
+    html{ scroll-behavior:auto; }
+  }
+
+  .mobile-sticky-cta {
+    display:none;
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    padding:16px 28px 20px;
+    background:white;
+    border-top:1px solid var(--line);
+    box-shadow:0 -2px 8px rgba(0,0,0,0.08);
+    z-index:999;
+  }
+  .mobile-sticky-cta a {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+    min-height:44px;
+    text-align:center;
+    padding:12px 0;
+    background:var(--navy);
+    color:white;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:0.95rem;
+  }
+
+  @media (max-width:640px){
+    .mobile-sticky-cta {
+      display:block;
+    }
+    body {
+      padding-bottom:80px;
+    }
+    button, .btn {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  @media (min-width:1200px) {
+    .hero {
+      gap: 80px;
+      padding-bottom: 120px;
+    }
+
+    section.wrap {
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+    section[style*="margin:64px 28px"] {
+      margin: 80px auto !important;
+      max-width: var(--max);
+    }
+
+    section[style*="padding:64px 28px"] {
+      padding-left: var(--padding-x) !important;
+      padding-right: var(--padding-x) !important;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+    }
+
+    h3 {
+      font-size: clamp(1.3rem, 2vw, 1.8rem);
+    }
+  }
+
+  @media (min-width:1400px) {
+    .hero {
+      gap: 120px;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 3.8rem);
+    }
+  }
+
+  .biz-type-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+  }
+  .biz-type-modal.active {
+    display: flex;
+  }
+  .biz-type-modal-content {
+    background: white;
+    border-radius: 16px;
+    padding: 40px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  }
+  .biz-type-modal-content h3 {
+    font-size: 1.5rem;
+    margin: 0 0 12px;
+    color: var(--ink);
+  }
+  .biz-type-modal-content p {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    margin: 0 0 24px;
+    line-height: 1.6;
+  }
+  .biz-type-options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .biz-type-option {
+    padding: 12px 16px;
+    border: 2px solid var(--line);
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+  .biz-type-option:hover {
+    border-color: var(--navy);
+    background: var(--navy-mist);
+  }
+  .biz-type-option.selected {
+    border-color: var(--navy);
+    background: var(--navy);
+    color: white;
+  }
+  .biz-type-modal-cta {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .biz-type-modal-cta button {
+    flex: 1;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .biz-type-modal-cta .btn-continue {
+    background: var(--navy);
+    color: white;
+  }
+  .biz-type-modal-cta .btn-continue:hover {
+    background: var(--navy-soft);
+  }
+  .biz-type-modal-cta .btn-skip {
+    background: var(--bg);
+    color: var(--ink-soft);
+    border: 1px solid var(--line);
+  }
+  .biz-type-modal-cta .btn-skip:hover {
+    border-color: var(--ink-faint);
+  }
+
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo"><span class="logo-mark"></span>LeadFlow HQ</div>
+    <a href="#booking" class="btn btn-primary">Book a demo</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="hero wrap">
+  <div>
+    <div class="eyebrow">AI Chat for Service Businesses</div>
+    <h1>Every unanswered after-hours lead is $1,200+ your competitor just booked.</h1>
+    <p class="sub">Answer every lead in 4 seconds, 24/7 while you sleep. Capture leads before your competitor sees them. Stop leaving money on the table.</p>
+    <div class="hero-ctas">
+      <a href="#booking" class="btn btn-primary">Book a demo</a>
+      <a href="#how" class="btn btn-ghost">See how it works</a>
+    </div>
+    <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:24px; font-size:0.85rem;">
+      <div style="display:flex; gap:6px; align-items:center; color:var(--ink-soft);">
+        <span style="color:#5FEAA5;">✓</span> Works with your site as-is
+      </div>
+      <div style="display:flex; gap:6px; align-items:center; color:var(--ink-soft);">
+        <span style="color:#5FEAA5;">✓</span> No technical setup needed
+      </div>
+      <div style="display:flex; gap:6px; align-items:center; color:var(--ink-soft);">
+        <span style="color:#5FEAA5;">✓</span> 15-minute onboarding
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="widget-card" id="hero-widget">
+      <div class="widget-head">
+        <div class="dot"></div>
+        <div class="name">Live Chat</div>
+        <div class="biz" id="hero-biz">FastFlow HVAC</div>
+      </div>
+      <div class="widget-body" id="hero-body"></div>
+    </div>
+    <div class="demo-note" style="margin-top:14px;">Example conversation — not a real customer. Try the real thing using the chat bubble in the corner of this page.</div>
+  </div>
+</section>
+
+<section class="problem wrap">
+  <div class="problem-grid">
+    <div>
+    <div class="section-head">
+      <div class="eyebrow">The problem</div>
+      <h2>The $1,200+ problem: You don't answer. Your competitor does. Lead's gone.</h2>
+    </div>
+      <p>It's 10pm Sunday and a customer's AC dies. They search your site, submit a form, maybe call. No one answers. They text a competitor they saw on Google. Competitor picks up in 30 seconds. By 10:15pm, they've booked and paid the deposit. You just lost $1,200+ — and didn't even know someone was looking.</p>
+    </div>
+    <div class="drop-off">
+      <div class="row"><span class="time">10:04pm</span><span>Customer's AC goes down (emergency)</span></div>
+      <div class="row"><span class="time">10:06pm</span><span>Finds your website, fills out form</span></div>
+      <div class="row"><span class="time">10:07pm</span><span class="fade">Tries calling — voicemail full</span></div>
+      <div class="row"><span class="time">10:09pm</span><span class="strike">Googles "HVAC near me" again</span></div>
+      <div class="row"><span class="time">10:11pm</span><span class="fade">Books competitor who picked up immediately</span></div>
+    </div>
+    <div style="margin-top:28px; padding:18px; background:var(--navy-mist); border-radius:12px; font-size:0.9rem; color:var(--ink);">
+      <div style="font-weight:600; margin-bottom:8px;">With LeadFlow HQ:</div>
+      <div style="display:flex; gap:16px; flex-wrap:wrap; font-size:0.85rem;">
+        <div><strong>10:06pm</strong> — Chat responds</div>
+        <div><strong>10:06:04pm</strong> — Lead captured</div>
+        <div><strong>10:06:08pm</strong> — You get notified</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" style="padding-top:0; padding-bottom:56px;">
+  <div style="display:flex; gap:24px; flex-wrap:wrap; max-width:900px;">
+    <div style="flex:1; min-width:240px;">
+      <div style="font-weight:600; font-size:0.9rem; color:var(--ink); margin-bottom:6px;">Works with any website</div>
+      <p style="font-size:0.9rem; color:var(--ink-soft); margin:0;">Shopify, WordPress, custom, you name it — we embed in minutes.</p>
+    </div>
+    <div style="flex:1; min-width:240px;">
+      <div style="font-weight:600; font-size:0.9rem; color:var(--ink); margin-bottom:6px;">No contract. Cancel anytime</div>
+      <p style="font-size:0.9rem; color:var(--ink-soft); margin:0;">Month-to-month after setup. Walk away whenever you want.</p>
+    </div>
+    <div style="flex:1; min-width:240px;">
+      <div style="font-weight:600; font-size:0.9rem; color:var(--ink); margin-bottom:6px;">15-min setup. We do it</div>
+      <p style="font-size:0.9rem; color:var(--ink-soft); margin:0;">Configure hours, services, pricing on a call. No code, no waiting.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="how">
+  <div class="section-head">
+    <div class="eyebrow">How it works</div>
+    <h2>Answer → Capture → Win. Happen instantly, 24/7.</h2>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div style="font-size:2.4rem; margin-bottom:12px;">💬</div>
+      <div class="num">1</div>
+      <h3>Be There</h3>
+      <p>The widget answers customer questions instantly — hours, availability, pricing — at 3am or during a job when you can't pick up the phone.</p>
+    </div>
+    <div class="step">
+      <div style="font-size:2.4rem; margin-bottom:12px;">📋</div>
+      <div class="num">2</div>
+      <h3>Capture the Lead</h3>
+      <p>When someone asks for an appointment or expresses interest, capture their name and phone number immediately. You own the lead before competitors even see them.</p>
+    </div>
+    <div class="step">
+      <div style="font-size:2.4rem; margin-bottom:12px;">✅</div>
+      <div class="num">3</div>
+      <h3>Win the Job</h3>
+      <p>Get instant notification, call them back first, and close the deal. First responder wins — you just became that responder.</p>
+    </div>
+  </div>
+</section>
+
+<section class="use-cases wrap">
+  <div class="section-head" style="margin:0 auto;">
+    <div class="eyebrow">Who it's for</div>
+    <h2 style="max-width:none;">Built for service businesses that win on speed</h2>
+  </div>
+  <div class="uc-primary">
+    <div class="uc-primary-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v6M9 5h6M6 10h12l-1 10a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 10z"/></svg>
+    </div>
+    <div>
+      <div class="uc-primary-title">Local Service Businesses</div>
+      <p class="uc-primary-copy">HVAC, plumbing, electrical, cleaning, roofing, landscaping, and any service where after-hours leads go to your competitors. Every unanswered message = lost job = lost $1,200+. This fixes that.</p>
+    </div>
+  </div>
+  <div class="uc-secondary">
+    <span class="uc-secondary-label">How it wins jobs:</span>
+    <div class="uc-tags">
+      <span class="uc-tag">Respond to emergencies instantly (10pm, 2am, Sunday)</span>
+      <span class="uc-tag">Capture leads before competitors see them</span>
+      <span class="uc-tag">Answer pricing & availability 24/7 without you</span>
+      <span class="uc-tag">Eliminate voicemail delays that lose deals</span>
+    </div>
+  </div>
+  <div style="margin-top:48px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px; max-width:1200px; margin-left:auto; margin-right:auto;">
+    <div style="padding:24px; background:var(--navy-mist); border-radius:12px;">
+      <div style="font-weight:700; color:var(--navy); margin-bottom:12px; font-size:0.95rem;">HVAC</div>
+      <div style="font-size:0.9rem; color:var(--ink-soft); line-height:1.6;">Customer's AC dies at 10pm. Searches "emergency HVAC" and finds you. Widget responds instantly: "Emergency availability? Cost?" — Lead captured before they call anyone else.</div>
+    </div>
+    <div style="padding:24px; background:var(--navy-mist); border-radius:12px;">
+      <div style="font-weight:700; color:var(--navy); margin-bottom:12px; font-size:0.95rem;">PLUMBING</div>
+      <div style="font-size:0.9rem; color:var(--ink-soft); line-height:1.6;">Midnight leak under the sink. They message you on your website. Widget responds: "Same-day availability? We can be there by morning." You book the $800-1,200 job before anyone else wakes up.</div>
+    </div>
+    <div style="padding:24px; background:var(--navy-mist); border-radius:12px;">
+      <div style="font-weight:700; color:var(--navy); margin-bottom:12px; font-size:0.95rem;">ELECTRICAL</div>
+      <div style="font-size:0.9rem; color:var(--ink-soft); line-height:1.6;">Sunday morning power outage. Landlord needs inspection urgently. Widget captures: "Can you come today? What's your rate?" Lead in queue before competitor's phone rings.</div>
+    </div>
+    <div style="padding:24px; background:var(--navy-mist); border-radius:12px;">
+      <div style="font-weight:700; color:var(--navy); margin-bottom:12px; font-size:0.95rem;">ROOFING</div>
+      <div style="font-size:0.9rem; color:var(--ink-soft); line-height:1.6;">Storm damage. Customer searches "roof inspection near me" after hours. Widget immediately confirms availability. You send inspector proposal by morning, competitors haven't even responded yet.</div>
+    </div>
+    <div style="padding:24px; background:var(--navy-mist); border-radius:12px;">
+      <div style="font-weight:700; color:var(--navy); margin-bottom:12px; font-size:0.95rem;">LANDSCAPING</div>
+      <div style="font-size:0.9rem; color:var(--ink-soft); line-height:1.6;">Spring season spike. Customers want quotes for backyard projects. Widget answers pricing and availability 24/7. Your quote arrives while others are still asleep—you win the project.</div>
+    </div>
+    <div style="padding:24px; background:var(--navy-mist); border-radius:12px;">
+      <div style="font-weight:700; color:var(--navy); margin-bottom:12px; font-size:0.95rem;">HANDYMAN</div>
+      <div style="font-size:0.9rem; color:var(--ink-soft); line-height:1.6;">Late-night fixture repair request. Widget responds instantly with availability and hourly rate. Customer books same-day callback. You're in the door before they even Google competitors.</div>
+    </div>
+  </div>
+</section>
+
+<section class="proof wrap" id="proof">
+  <div class="section-head">
+    <div class="eyebrow">Where things stand</div>
+    <h2>No case studies yet. Here's what you get instead.</h2>
+  </div>
+  <div class="proof-grid">
+    <div class="founder-note">
+      <div class="founder-avatar">A</div>
+      <div>
+        <p style="margin-bottom:16px;"><strong>Hi, I'm Alberto.</strong> 5+ years building automation for service businesses. I built LeadFlow because I got tired watching contractors lose $1,200+ jobs to voicemail. This isn't a side project—I'm personally onboarding every customer.</p>
+        <p>I built this, I maintain it, and I personally set up every customer. No support queue, no handoff to a support team. If something breaks, you reach me directly. My reputation depends on your success — so I make sure it works.</p>
+      </div>
+      <div class="founder-sign">— Alberto, founder</div>
+    </div>
+    <div>
+      <div class="trust-chips">
+        <div class="trust-chip">
+          <div class="trust-chip-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/></svg>
+          </div>
+          <div>
+            <div class="trust-chip-title">Works with Shopify, WordPress, your existing site</div>
+            <p class="trust-chip-copy">No rebuilds, no migration. Just a small script that installs on whatever platform you use today.</p>
+          </div>
+        </div>
+        <div class="trust-chip">
+          <div class="trust-chip-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          </div>
+          <div>
+            <div class="trust-chip-title">Every customer gets personal setup</div>
+            <p class="trust-chip-copy">I configure your business rules, hours, services, and integrations. Then I optimize based on your actual lead patterns. Your success is my metric.</p>
+          </div>
+        </div>
+        <div class="trust-chip">
+          <div class="trust-chip-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l6 6L20 6"/></svg>
+          </div>
+          <div>
+            <div class="trust-chip-title">15-minute setup. I configure everything. You approve once, then it works.</div>
+            <p class="trust-chip-copy">No code, no technical work on your end. I handle hours, services, pricing, integrations. You just say yes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="faq">
+  <div class="section-head">
+    <div class="eyebrow">FAQ</div>
+    <h2>Won't this slow down my site? What about my existing setup?</h2>
+  </div>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>How long does setup actually take?</summary>
+      <p class="faq-answer">About 15 minutes on a call — I configure the widget with your real hours, services, and pricing myself. You don't touch any code.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Will it work with my existing website?</summary>
+      <p class="faq-answer">Yes. It's a small piece of code added to your site, regardless of what platform it's built on. It sits on top of what you already have — nothing gets rebuilt or replaced.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Do I need to give up my current booking system?</summary>
+      <p class="faq-answer">No. The widget captures the lead and the requested time, and connects to your calendar — it doesn't require you to switch tools.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Is visitor data safe?</summary>
+      <p class="faq-answer">Yes. Conversations and leads are tied to your business only — we never share or pool visitor data across other businesses using LeadFlow HQ.</p>
+    </details>
+    <details class="faq-item">
+      <summary>What happens if it can't answer a question?</summary>
+      <p class="faq-answer">It sticks to what it knows — your hours, services, and pricing — and hands off to a lead capture instead of guessing. It won't invent answers about your business.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Can I cancel anytime?</summary>
+      <p class="faq-answer">Yes, it's month-to-month after the one-time setup. No contract lock-in.</p>
+    </details>
+  </div>
+</section>
+
+<section class="wrap" style="text-align:center; padding-top:48px; padding-bottom:48px;">
+  <h2 style="max-width:none; margin-bottom:16px;">Ready to stop losing leads?</h2>
+  <p style="color:var(--ink-soft); margin-bottom:28px; max-width:60ch; margin-left:auto; margin-right:auto;">See exactly how many prospects are reaching out after hours and booking your competitors instead.</p>
+  <a href="#booking" class="btn btn-primary" style="font-size:1rem; padding:16px 32px;">Book a demo</a>
+  <p style="font-size:0.9rem; color:var(--ink-faint); margin-top:16px;">Or reach out: <a href="mailto:hello@leadflowhq.tech" style="color:var(--ink-soft); text-decoration:underline;">hello@leadflowhq.tech</a></p>
+</section>
+
+<section class="wrap" id="booking">
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; max-width:1000px; margin:0 auto;">
+    <style>
+      @media (max-width:800px) {
+        #booking > div { grid-template-columns: 1fr !important; }
+      }
+    </style>
+    <div>
+      <div class="eyebrow">Schedule your demo</div>
+      <h2 style="margin-top:20px; margin-bottom:28px;">See the 4-second advantage that wins jobs</h2>
+      <div style="display:flex; flex-direction:column; gap:20px;">
+        <div>
+          <div style="font-weight:600; font-size:0.95rem; margin-bottom:6px;">During the demo, you'll see:</div>
+          <p style="color:var(--ink-soft); font-size:0.9rem; line-height:1.6; margin:0;">Your widget answering real customer questions 24/7 — exactly how fast it responds and how leads get captured. Most see they're missing $1,200+ per unanswered message. You'll walk away knowing your specific revenue opportunity and exactly how setup works.</p>
+        </div>
+        <div>
+          <div style="font-weight:600; font-size:0.95rem; margin-bottom:8px;">What you get</div>
+          <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:6px;">
+            <li style="font-size:0.9rem; color:var(--ink-soft);">✓ Personalized demo with your business type</li>
+            <li style="font-size:0.9rem; color:var(--ink-soft);">✓ Revenue analysis: How many leads you're losing right now</li>
+            <li style="font-size:0.9rem; color:var(--ink-soft);">✓ Custom setup plan for your specific workflow</li>
+          </ul>
+        </div>
+        <div>
+          <div style="font-weight:600; font-size:0.95rem; margin-bottom:6px;">After the demo</div>
+          <p style="color:var(--ink-soft); font-size:0.9rem; line-height:1.6; margin:0;">I send a custom setup plan and timeline specific to your business. You'll know exactly what to expect and how long it takes (hint: 15 minutes). Only move forward if you're confident it's the right fit. No surprises, no pressure—just a clear decision to make.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div id="biz-type-modal" class="biz-type-modal">
+        <div class="biz-type-modal-content">
+          <h3>What's your business type?</h3>
+          <p>This helps me customize the demo for your specific needs.</p>
+          <div class="biz-type-options">
+            <div class="biz-type-option" data-type="HVAC">HVAC</div>
+            <div class="biz-type-option" data-type="Plumbing">Plumbing</div>
+            <div class="biz-type-option" data-type="Electrical">Electrical</div>
+            <div class="biz-type-option" data-type="Cleaning">Cleaning</div>
+            <div class="biz-type-option" data-type="Roofing">Roofing</div>
+            <div class="biz-type-option" data-type="Other">Other</div>
+          </div>
+          <div class="biz-type-modal-cta">
+            <button class="btn-skip" onclick="document.getElementById('biz-type-modal').classList.remove('active')">Skip</button>
+            <button class="btn-continue" onclick="window.openCalendly()">Continue</button>
+          </div>
+        </div>
+      </div>
+      <div class="calendly-inline-widget" data-url="https://calendly.com/hello-leadflowhq/30min" style="min-width:320px; height:630px;"></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="mobile-sticky-cta">
+  <a href="#booking">Book Free Demo</a>
+</div>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div>
+      <div class="logo"><span class="logo-mark"></span>LeadFlow HQ</div>
+      <div class="copyright">© 2026 LeadFlow HQ. All rights reserved.</div>
+    </div>
+    <div class="contact">hello@leadflowhq.tech</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function bubble(container, text, cls, delay, timing){
+    return new Promise(function(resolve){
+      setTimeout(function(){
+        var wrapper = document.createElement('div');
+        wrapper.style.display = 'flex';
+        wrapper.style.alignItems = 'flex-end';
+        wrapper.style.gap = '8px';
+        wrapper.style.marginBottom = '8px';
+
+        var el = document.createElement('div');
+        el.className = 'bubble ' + cls;
+        el.textContent = text;
+        wrapper.appendChild(el);
+
+        if(timing && cls === 'bot'){
+          var timer = document.createElement('div');
+          timer.style.fontSize = '0.7rem';
+          timer.style.color = '#5FEAA5';
+          timer.style.fontWeight = '600';
+          timer.style.whiteSpace = 'nowrap';
+          timer.textContent = timing;
+          wrapper.appendChild(timer);
+        }
+
+        container.appendChild(wrapper);
+        resolve();
+      }, reduce ? 0 : delay);
+    });
+  }
+
+  function ticket(container, name, phone, delay, time){
+    return new Promise(function(resolve){
+      setTimeout(function(){
+        var el = document.createElement('div');
+        el.className = 'lead-ticket';
+        el.innerHTML = '<div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#0E1116" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></div>' +
+          '<div><div>Lead captured — ' + name + '</div><div class="meta">' + phone + ' <strong style="color:#5FEAA5;">(' + time + ')</strong></div></div>';
+        container.appendChild(el);
+        resolve();
+      }, reduce ? 0 : delay);
+    });
+  }
+
+  var conversations = [
+    {
+      biz: 'FastFlow HVAC',
+      lines: [
+        ["My AC just went out. Can you come tonight? It's an emergency.", 'visitor', 0],
+        ["I can help — we have emergency availability tonight. What time works?", 'bot', 400, '4 seconds'],
+        ["ASAP! How about 9pm?", 'visitor', 400],
+        ["Perfect. Confirming your appointment: Tonight 9pm Emergency AC repair at 123 Oak St. We'll call in 5 min.", 'bot', 400],
+      ],
+      lead: { name: 'Mike', meta: '123 Oak St — Tonight 9pm Emergency AC repair — $1,200+ job', time: '8 seconds' }
+    },
+    {
+      biz: 'Premier Plumbing Co',
+      lines: [
+        ["Do you have same-day service? I have a pipe leak under my sink.", 'visitor', 0],
+        ["Yes! We can be there same-day. What time is best for you?", 'bot', 400, '4 seconds'],
+        ["This afternoon around 2pm?", 'visitor', 400],
+        ["Got it. Scheduled: Today 2pm Leak repair at 456 Maple Ave. Tech arriving with full tools.", 'bot', 400],
+      ],
+      lead: { name: 'Sarah', meta: '456 Maple Ave — Today 2pm Leak repair — Ready to book', time: '8 seconds' }
+    },
+    {
+      biz: 'Elite Electric',
+      lines: [
+        ["Need electrical inspection for my rental. Are you available this week?", 'visitor', 0],
+        ["Absolutely. What day works best for you?", 'bot', 400, '4 seconds'],
+        ["Thursday morning, 10am?", 'visitor', 400],
+        ["Perfect. Booked: Thursday 10am Electrical inspection at 456 Oak. Inspector confirmed.", 'bot', 400],
+      ],
+      lead: { name: 'James', meta: '456 Oak — Thursday 10am Electrical inspection — Appointment secured', time: '8 seconds' }
+    }
+  ];
+
+  async function playConversation(convo){
+    var body = document.getElementById('hero-body');
+    var label = document.getElementById('hero-biz');
+    body.innerHTML = '';
+    label.textContent = convo.biz;
+    for (var i = 0; i < convo.lines.length; i++){
+      var line = convo.lines[i];
+      await bubble(body, line[0], line[1], line[2], line[3]);
+    }
+    await ticket(body, convo.lead.name, convo.lead.meta, 500, convo.lead.time);
+  }
+
+  async function loop(){
+    var i = 0;
+    while(true){
+      await playConversation(conversations[i % conversations.length]);
+      i++;
+      await new Promise(function(r){ setTimeout(r, reduce ? 0 : 2600); });
+      if (reduce) break;
+    }
+  }
+
+  if ('IntersectionObserver' in window){
+    var started = false;
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting && !started){
+          started = true;
+          loop();
+        }
+      });
+    }, { threshold: 0.3 });
+    obs.observe(document.getElementById('hero-widget'));
+  } else {
+    loop();
+  }
+})();
+
+// Business type modal functionality
+(function(){
+  var modal = document.getElementById('biz-type-modal');
+  var selectedType = null;
+
+  // Handle business type option clicks
+  var options = document.querySelectorAll('.biz-type-option');
+  options.forEach(function(option) {
+    option.addEventListener('click', function() {
+      options.forEach(function(o) { o.classList.remove('selected'); });
+      this.classList.add('selected');
+      selectedType = this.getAttribute('data-type');
+    });
+  });
+
+  // Override Calendly opening to show modal first
+  window.openCalendly = function() {
+    if (selectedType) {
+      modal.classList.remove('active');
+      Calendly.showPopupWidget('https://calendly.com/hello-leadflowhq/30min');
+    } else {
+      alert('Please select your business type');
+    }
+  };
+
+  // Hook into all booking links to show modal
+  var bookingLinks = document.querySelectorAll('a[href="#booking"]');
+  bookingLinks.forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      if (!selectedType && this.getAttribute('data-calendly') !== 'true') {
+        e.preventDefault();
+        modal.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Allow business type options to open Calendly when clicked
+  options.forEach(function(option) {
+    option.addEventListener('click', function() {
+      selectedType = this.getAttribute('data-type');
+    });
+  });
+})();
+</script>
+
+<!-- EXIT-INTENT POPUP -->
+<div id="exitPopup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999; align-items:center; justify-content:center;">
+  <div style="background:white; border-radius:16px; padding:40px; max-width:500px; width:90%; box-shadow:0 10px 40px rgba(0,0,0,0.3); text-align:center;">
+    <div style="font-size:2rem; margin-bottom:16px;">⏰</div>
+    <h2 style="font-size:1.6rem; margin:0 0 16px; color:var(--ink);">Wait! One quick question</h2>
+    <p style="color:var(--ink-soft); margin:0 0 24px; line-height:1.6; font-size:0.95rem;">How many after-hours leads do you think you're losing right now?</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:24px;">
+      <a href="#" onclick="document.getElementById('exitPopup').style.display='none'; document.querySelector('input[placeholder*=business]').focus(); return false;" style="padding:12px; background:var(--navy-mist); color:var(--navy); border:none; border-radius:8px; text-decoration:none; font-weight:600; cursor:pointer; font-size:0.9rem;">5-10 leads/mo</a>
+      <a href="#" onclick="document.getElementById('exitPopup').style.display='none'; document.querySelector('input[placeholder*=business]').focus(); return false;" style="padding:12px; background:var(--navy-mist); color:var(--navy); border:none; border-radius:8px; text-decoration:none; font-weight:600; cursor:pointer; font-size:0.9rem;">10-20 leads/mo</a>
+    </div>
+    <p style="color:var(--ink-faint); font-size:0.85rem; margin:0;">Our calculator shows exactly what that costs. It takes 2 minutes.</p>
+    <button onclick="document.getElementById('exitPopup').style.display='none'" style="margin-top:16px; padding:8px 16px; background:white; border:1px solid var(--line); border-radius:6px; cursor:pointer; color:var(--ink-soft); font-size:0.85rem;">No thanks, I'll pass</button>
+  </div>
+</div>
+
+<!-- LIVE CHAT WIDGET -->
+
+<script>
+// Exit-intent popup - only show once per session
+if (!sessionStorage.getItem('exitPopupShown')) {
+  document.addEventListener('mouseleave', function(event) {
+    if (event.clientY < 0 && sessionStorage.getItem('exitPopupShown') !== 'true') {
+      document.getElementById('exitPopup').style.display = 'flex';
+      sessionStorage.setItem('exitPopupShown', 'true');
+    }
+  });
+}
+
+// Close popup on escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.getElementById('exitPopup').style.display = 'none';
+  }
+});
+
+</script>
+
+<!-- n8n Booking Agent Widget -->
+<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+<style>
+  :root {
+    /* LeadFlow HQ navy palette, replacing the widget's pink default */
+    --chat--color-primary: #16223F;
+    --chat--color-primary-shade-50: #0f1830;
+    --chat--color-primary-shade-100: #0a1120;
+    --chat--color-secondary: #16223F;
+    --chat--color-secondary-shade-50: #0f1830;
+    --chat--color-white: #ffffff;
+    --chat--color-light: #EEF1F6;
+    --chat--color-light-shade-50: #E3E8F1;
+    --chat--color-light-shade-100: #c2c5cc;
+    --chat--color-medium: #d2d4d9;
+    --chat--color-dark: #0E1116;
+    --chat--color-disabled: #777980;
+    --chat--color-typing: #404040;
+    --chat--border-radius: 12px;
+    --chat--window--width: 380px;
+    --chat--window--height: 600px;
+    --chat--message--bot--background: var(--chat--color-white);
+    --chat--message--bot--color: var(--chat--color-dark);
+    --chat--message--user--background: var(--chat--color-primary);
+    --chat--message--user--color: var(--chat--color-white);
+    --chat--toggle--background: var(--chat--color-primary);
+    --chat--toggle--hover--background: #22335C;
+    --chat--toggle--active--background: #0a1120;
+    --chat--toggle--color: var(--chat--color-white);
+    --chat--toggle--size: 60px;
+  }
+  /* The widget doesn't expose an official font-family variable,
+     so we force it to inherit the site's font instead */
+  #n8n-chat, #n8n-chat * {
+    font-family: 'Inter', system-ui, sans-serif !important;
+  }
+</style>
+<script type="module">
+  import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+  createChat({
+    webhookUrl: 'https://alexcapitalai.app.n8n.cloud/webhook/35c5ba5e-7108-4ae1-bb61-9114ac49e33d/chat',
+    mode: 'window',
+    initialMessages: [
+      'Hi there! 👋',
+      "I'm here to help you book an appointment. What can I help you with today?"
+    ],
+    i18n: {
+      en: {
+        title: 'LeadFlow HQ',
+        subtitle: "We're here to help, 24/7.",
+        footer: '',
+        getStarted: 'New Conversation',
+        inputPlaceholder: 'Type your message...',
+      },
+    },
+  });
+</script>
+
+</body>
+</html>
