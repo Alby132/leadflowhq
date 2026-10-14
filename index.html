@@ -379,7 +379,9 @@ if (CHAT_WEBHOOK_URL) {
   btn.hidden = false;
   btn.addEventListener('click', () => {
     const toggle = document.querySelector('.chat-window-toggle');
-    if (toggle && !document.querySelector('.chat-window-wrapper .chat-window')?.offsetParent) toggle.click();
+    const win = document.querySelector('#n8n-chat .chat-window');
+    const isOpen = win && win.getBoundingClientRect().width > 50;
+    if (toggle && !isOpen) toggle.click();
   });
 }
 </script>
