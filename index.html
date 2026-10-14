@@ -131,7 +131,7 @@ section.band .intro{margin-top:16px;color:var(--muted);max-width:36em;font-size:
 footer{padding:32px 0 48px;color:var(--muted);font-size:.92rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid var(--line)}
 
 /* Website chat (n8n widget) */
-:root{
+#n8n-chat{
   --chat--font-family:"Schibsted Grotesk",system-ui,sans-serif;
   --chat--color--primary:var(--teal);
   --chat--color--primary-shade-50:var(--teal-deep);
@@ -208,7 +208,7 @@ footer{padding:32px 0 48px;color:var(--muted);font-size:.92rem;display:flex;just
 #n8n-chat .chat-window-toggle{box-shadow:0 8px 24px rgba(15,110,100,.35)}
 #n8n-chat .chat-footer:empty,#n8n-chat .chat-powered-by{display:none}
 @media (max-width:480px){
-  :root{--chat--window--width:calc(100vw - 24px);--chat--window--height:calc(100dvh - 110px);--chat--window--right:12px;--chat--window--bottom:12px}
+  #n8n-chat{--chat--window--width:calc(100vw - 24px);--chat--window--height:calc(100dvh - 110px);--chat--window--right:12px;--chat--window--bottom:12px}
 }
 </style>
 </head>
