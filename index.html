@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="stylesheet" href="/assets/site.css?v=5">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -26,6 +26,7 @@
   <header class="top">
     <a class="logo" href="/">LeadFlow<span>HQ</span></a>
     <nav aria-label="Main">
+      <a class="hide-sm" href="#see">See it</a>
       <a class="hide-sm" href="#how">How it works</a>
       <a class="hide-sm" href="#pricing">Pricing</a>
       <a class="hide-sm" href="#faq">FAQ</a>
@@ -94,6 +95,40 @@
         <li><div><h3>We add it to your website</h3><p>One line of code, on whatever your site is built with: WordPress, Wix, Squarespace or custom. Nothing on your site is rebuilt or replaced.</p></div></li>
         <li><div><h3>Patients ask, you get the request</h3><p>The assistant answers questions and collects the patient's name, phone number and what they need. Your team gets it by email straight away and confirms the appointment in your usual system.</p></div></li>
       </ol>
+    </section>
+
+    <section class="band" id="see">
+      <h2>What it looks like</h2>
+      <p class="intro">Left: a real conversation with the assistant, set up for an example clinic. Right: the email your team gets from it.</p>
+      <div class="show">
+        <figure>
+          <img src="/assets/img/chat-en.webp" width="724" height="1305" loading="lazy" decoding="async" alt="Chat window: a patient asks how much a new-patient check-up costs, the assistant answers £55 and offers to take a request; the patient asks for Tuesday morning and leaves name and phone, and the assistant confirms the clinic team will call to confirm.">
+          <figcaption>Real screenshot from a demo. Clinic details are an example.</figcaption>
+        </figure>
+        <div>
+          <p class="arrow">Your team receives this straight away</p>
+          <div class="mail">
+            <dl class="mail-head">
+              <dt>From</dt><dd>Website assistant</dd>
+              <dt>To</dt><dd>reception@your-clinic.com</dd>
+              <dt>Subject</dt><dd>New appointment request: Sarah Mills</dd>
+            </dl>
+            <div class="mail-body">
+              <h3>New appointment request</h3>
+              <dl>
+                <dt>Patient</dt><dd>Sarah Mills (new patient)</dd>
+                <dt>Phone</dt><dd>07700 900123</dd>
+                <dt>Wants</dt><dd>Check-up</dd>
+                <dt>Preferred time</dt><dd>Tuesday morning</dd>
+                <dt>Received</dt><dd>Monday 21:48, via your website</dd>
+              </dl>
+              <p class="quote">Patient asked about the new-patient check-up price and was told £55.</p>
+              <p class="act">Call the patient to confirm a time in your usual booking system.</p>
+            </div>
+          </div>
+          <p class="show-note">Example email. The layout and the address it goes to are set up with you.</p>
+        </div>
+      </div>
     </section>
 
     <section class="band">
@@ -168,6 +203,6 @@
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.9A8 8 0 1 1 21 12z"/></svg>
 </button>
 
-<script src="/assets/site.js?v=4" defer></script>
+<script src="/assets/site.js?v=5" defer></script>
 </body>
 </html>

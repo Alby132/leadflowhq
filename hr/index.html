@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="stylesheet" href="/assets/site.css?v=5">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -27,6 +27,7 @@
   <header class="top">
     <a class="logo" href="/hr/">LeadFlow<span>HQ</span></a>
     <nav aria-label="Glavna navigacija">
+      <a class="hide-sm" href="#izgled">Izgled</a>
       <a class="hide-sm" href="#kako">Kako radi</a>
       <a class="hide-sm" href="#cijena">Cijena</a>
       <a class="hide-sm" href="#pitanja">Pitanja</a>
@@ -95,6 +96,40 @@
         <li><div><h3>Dodajemo ga na vašu stranicu</h3><p>Jedan redak koda, na čemu god je stranica napravljena: WordPress, Wix, Squarespace ili po mjeri. Ništa se ne mijenja niti gradi ispočetka.</p></div></li>
         <li><div><h3>Pacijenti pitaju, vi dobivate zahtjev</h3><p>Asistent odgovara na pitanja i bilježi ime, broj telefona i razlog dolaska. Vaš tim to odmah dobiva e-mailom i potvrđuje termin u sustavu koji već koristite.</p></div></li>
       </ol>
+    </section>
+
+    <section class="band" id="izgled">
+      <h2>Kako to izgleda</h2>
+      <p class="intro">Lijevo: stvarni razgovor s asistentom, postavljenim za primjer ordinacije. Desno: e-mail koji vaš tim dobije.</p>
+      <div class="show">
+        <figure>
+          <img src="/assets/img/chat-hr.webp" width="724" height="1300" loading="lazy" decoding="async" alt="Chat prozor: pacijentica pita koliko košta pregled za novog pacijenta, asistent odgovara 40 € i nudi zaprimanje zahtjeva; pacijentica traži subotu ujutro i ostavlja ime i broj telefona, a asistent potvrđuje da će je tim nazvati.">
+          <figcaption>Stvarna snimka zaslona iz dema. Podaci ordinacije su primjer.</figcaption>
+        </figure>
+        <div>
+          <p class="arrow">Vaš tim ovo dobiva odmah</p>
+          <div class="mail">
+            <dl class="mail-head">
+              <dt>Od</dt><dd>Asistent na web stranici</dd>
+              <dt>Za</dt><dd>recepcija@vasa-ordinacija.hr</dd>
+              <dt>Predmet</dt><dd>Novi zahtjev za termin: Ana Horvat</dd>
+            </dl>
+            <div class="mail-body">
+              <h3>Novi zahtjev za termin</h3>
+              <dl>
+                <dt>Pacijent</dt><dd>Ana Horvat (novi pacijent)</dd>
+                <dt>Telefon</dt><dd>091 123 4567</dd>
+                <dt>Želi</dt><dd>Pregled</dd>
+                <dt>Termin</dt><dd>Subota ujutro</dd>
+                <dt>Zaprimljeno</dt><dd>Petak 21:48, preko web stranice</dd>
+              </dl>
+              <p class="quote">Pacijentica je pitala cijenu pregleda za nove pacijente i dobila odgovor 40 €.</p>
+              <p class="act">Nazovite pacijenticu i potvrdite termin u sustavu koji već koristite.</p>
+            </div>
+          </div>
+          <p class="show-note">Primjer e-maila. Izgled i adresu na koju stiže dogovaramo s vama.</p>
+        </div>
+      </div>
     </section>
 
     <section class="band">
@@ -169,6 +204,6 @@
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.9A8 8 0 1 1 21 12z"/></svg>
 </button>
 
-<script src="/assets/site.js?v=4" defer></script>
+<script src="/assets/site.js?v=5" defer></script>
 </body>
 </html>
