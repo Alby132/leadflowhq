@@ -32,7 +32,10 @@
 .browser .dots{display:flex;gap:6px}
 .browser .dots i{width:10px;height:10px;border-radius:50%;background:#C9D3D0;display:block}
 .browser .url{flex:1;background:#fff;border-radius:6px;padding:4px 10px;font-size:.8rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.site{padding:22px 26px 30px}
+.site{--brand:var(--teal-deep);padding:22px 26px 30px;border-top:4px solid var(--brand)}
+.site-nav strong{display:flex;align-items:center;gap:10px;color:var(--brand)}
+.site-nav img{height:30px;width:auto;max-width:140px;object-fit:contain}
+.site h2{color:var(--brand)}
 .site-nav{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid #EEF2F1}
 .site-nav strong{font-size:1.05rem}
 .site-nav span{display:flex;gap:16px;font-size:.88rem;color:var(--muted)}
@@ -53,8 +56,9 @@
 #n8n-chat{height:100%}
 #n8n-chat .chat-layout{height:100%}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.chips button{font:inherit;font-size:.88rem;border:1px solid var(--line);background:#fff;color:var(--teal-deep);border-radius:999px;padding:7px 12px;cursor:pointer}
-.chips button:hover{border-color:var(--teal)}
+.chips{--brand:var(--teal-deep)}
+.chips button{font:inherit;font-size:.88rem;border:1px solid var(--line);background:#fff;color:var(--brand);border-radius:999px;padding:7px 12px;cursor:pointer}
+.chips button:hover{border-color:var(--brand)}
 
 .notes{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;padding:40px 0;border-top:1px solid var(--line)}
 .notes h3{font-size:1.05rem;margin-bottom:6px}
@@ -203,6 +207,50 @@ const slug = (params.get('c') || '').trim().toLowerCase();
 const preview = params.get('preview') === '1';
 const guessLang = (navigator.language || 'en').toLowerCase().startsWith('hr') ? 'hr' : 'en';
 
+/* The clinic's own colour, darkened only as far as needed for readable white text (WCAG 4.5:1). */
+function shade(hex, f) {
+  const n = parseInt(hex.slice(1), 16);
+  return '#' + [n >> 16 & 255, n >> 8 & 255, n & 255].map(v => Math.round(v * f).toString(16).padStart(2, '0')).join('');
+}
+function luminance(hex) {
+  const n = parseInt(hex.slice(1), 16);
+  return [n >> 16 & 255, n >> 8 & 255, n & 255].reduce((sum, v, i) => {
+    v /= 255; v = v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+    return sum + v * [0.2126, 0.7152, 0.0722][i];
+  }, 0);
+}
+function applyBrand(color, logo, name) {
+  if (/^#[0-9a-f]{6}$/i.test(color || '')) {
+    let accent = color;
+    for (let i = 0; i < 14 && 1.05 / (luminance(accent) + 0.05) < 4.5; i++) accent = shade(accent, 0.9);
+    const dark = shade(accent, 0.78);
+    const chat = document.getElementById('n8n-chat');
+    const vars = {
+      '--chat--color--primary': accent, '--chat--color--primary-shade-50': dark, '--chat--color--primary--shade-100': dark,
+      '--chat--color--secondary': accent, '--chat--color-secondary-shade-50': dark,
+      '--chat--header--background': dark, '--chat--message--user--background': accent,
+      '--chat--input--send--button--color': accent, '--chat--input--send--button--color-hover': dark,
+      '--chat--toggle--background': accent, '--chat--toggle--hover--background': dark, '--chat--toggle--active--background': dark
+    };
+    Object.keys(vars).forEach(k => chat.style.setProperty(k, vars[k]));
+    document.querySelectorAll('.site, .chips').forEach(el => el.style.setProperty('--brand', accent));
+  }
+  if (/^https:\/\//i.test(logo || '')) {
+    const img = new Image();
+    img.alt = name;
+    img.referrerPolicy = 'no-referrer';
+    img.onload = () => {
+      if (img.naturalWidth < 16) return;
+      const strong = document.querySelector('.site-nav strong');
+      if (strong) strong.prepend(img);
+      const st = document.createElement('style');
+      st.textContent = '#n8n-chat .chat-header{position:relative;padding-left:68px}#n8n-chat .chat-header::before{content:"";position:absolute;left:18px;top:50%;width:36px;height:36px;margin-top:-18px;border-radius:10px;box-sizing:border-box;padding:5px;background:#fff url("' + logo.replace(/["\\)]/g, '') + '") center/contain no-repeat;background-origin:content-box}';
+      document.head.appendChild(st);
+    };
+    img.src = logo;
+  }
+}
+
 function applyText(t) {
   document.querySelectorAll('[data-t]').forEach(el => { const v = t[el.dataset.t]; if (typeof v === 'string') el.textContent = v; });
 }
@@ -242,6 +290,7 @@ async function start() {
   fill('services', clinic.services || t.notProvided);
   fill('prices', clinic.prices || t.notProvided);
   document.querySelector('.demo-bar a.btn').href = '#next';
+  applyBrand(clinic.brandColor, clinic.logoUrl, name);
   document.body.dataset.state = 'ready';
 
   const { createChat } = await import(CHAT_BUNDLE);

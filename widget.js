@@ -1,7 +1,7 @@
 /*!
  * LeadFlow HQ clinic chat widget
  * <script src="https://leadflowhq.tech/widget.js" data-key="CLIENT_KEY" data-name="Clinic name" data-lang="en" defer></script>
- * Optional: data-color="#0F6E64"
+ * Optional: data-color="#0F6E64" (the clinic's brand colour), data-logo="https://.../icon.png" (square icon or logo)
  */
 (function () {
   if (window.__leadflowWidget) return;
@@ -16,7 +16,9 @@
 
   var name = (script.getAttribute('data-name') || '').trim();
   var lang = (script.getAttribute('data-lang') || document.documentElement.lang || 'en').slice(0, 2).toLowerCase();
-  var color = /^#[0-9a-f]{6}$/i.test(script.getAttribute('data-color') || '') ? script.getAttribute('data-color') : '#0F6E64';
+  var brand = /^#[0-9a-f]{6}$/i.test(script.getAttribute('data-color') || '') ? script.getAttribute('data-color') : '#0F6E64';
+  var logo = (script.getAttribute('data-logo') || '').trim();
+  if (!/^https:\/\/[^\s"'()<>]+$/i.test(logo)) logo = '';
 
   var TEXT = {
     en: {
@@ -41,6 +43,16 @@
     var r = Math.round(((n >> 16) & 255) * f), g = Math.round(((n >> 8) & 255) * f), b = Math.round((n & 255) * f);
     return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
   }
+  function luminance(hex) {
+    var n = parseInt(hex.slice(1), 16);
+    return [(n >> 16) & 255, (n >> 8) & 255, n & 255].reduce(function (sum, v, i) {
+      v /= 255; v = v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+      return sum + v * [0.2126, 0.7152, 0.0722][i];
+    }, 0);
+  }
+  /* Keep the clinic's hue, but darken it until white text on it is readable (WCAG 4.5:1). */
+  var color = brand;
+  for (var i = 0; i < 14 && (1.05 / (luminance(color) + 0.05)) < 4.5; i++) color = shade(color, 0.9);
   var dark = shade(color, 0.78);
   var side = 'right';
 
@@ -71,6 +83,18 @@
   var style = document.createElement('style');
   style.textContent = css;
   document.head.appendChild(style);
+
+  /* The clinic's own icon in the chat header, only once it has really loaded (a broken image never shows). */
+  if (logo) {
+    var img = new Image();
+    img.onload = function () {
+      if (img.naturalWidth < 16) return;
+      style.textContent += '#n8n-chat .chat-header{position:relative;padding-left:68px}' +
+        '#n8n-chat .chat-header::before{content:"";position:absolute;left:18px;top:50%;width:36px;height:36px;margin-top:-18px;border-radius:10px;' +
+        'box-sizing:border-box;padding:5px;background:#fff url("' + logo + '") center/contain no-repeat;background-origin:content-box;box-shadow:0 0 0 1px rgba(255,255,255,.25)}';
+    };
+    img.src = logo;
+  }
 
   var btn = document.createElement('button');
   btn.type = 'button';
