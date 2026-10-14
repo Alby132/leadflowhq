@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://leadflowhq.tech/sitemap.xml
