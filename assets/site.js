@@ -21,7 +21,7 @@
   var t = TEXT[lang] || TEXT.en;
 
   var CHAT_WEBHOOK_URL = 'https://alexcapitalai.app.n8n.cloud/webhook/eb54350e-b9ca-422f-9117-989fdfa87459/chat';
-  var CHAT_BASE = 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/';
+  var CHAT_BASE = 'https://cdn.jsdelivr.net/npm/@n8n/chat@1.41.0/dist/';
 
   /* Hero: play the example conversation once */
   doc.classList.add('js');

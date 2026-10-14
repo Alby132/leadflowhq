@@ -10,4 +10,14 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://leadflowhq.tech/"/>
     <xhtml:link rel="alternate" hreflang="hr" href="https://leadflowhq.tech/hr/"/>
   </url>
+  <url>
+    <loc>https://leadflowhq.tech/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://leadflowhq.tech/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://leadflowhq.tech/hr/privatnost/"/>
+  </url>
+  <url>
+    <loc>https://leadflowhq.tech/hr/privatnost/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://leadflowhq.tech/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://leadflowhq.tech/hr/privatnost/"/>
+  </url>
 </urlset>

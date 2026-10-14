@@ -7,12 +7,10 @@
 <title>Your demo | LeadFlow HQ</title>
 <meta name="theme-color" content="#183A35">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230F6E64'/%3E%3Cpath d='M9 9v14h11' stroke='%23fff' stroke-width='3.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='23' cy='11' r='3' fill='%23F2C94C'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=5">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css">
-<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js">
+<link rel="preload" href="/assets/fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css?v=6">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@n8n/chat@1.41.0/dist/style.css">
+<link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/@n8n/chat@1.41.0/dist/chat.bundle.es.js">
 <style>
 .demo-bar{background:var(--night);color:#E7EFEC}
 .demo-bar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:14px;padding-bottom:14px;flex-wrap:wrap}
@@ -140,13 +138,18 @@ body[data-state="missing"] [data-view="missing"]{display:block}
       </div>
       <a class="btn btn-solid" href="https://calendly.com/hello-leadflowhq/30min" target="_blank" rel="noopener" data-t="nextBtn">Book a 30-minute call</a>
     </section>
+
+    <footer>
+      <span>© 2026 LeadFlow HQ</span>
+      <span><a href="/privacy/" data-privacy data-t="privacy">Privacy</a> · <a href="mailto:hello@leadflowhq.tech">hello@leadflowhq.tech</a></span>
+    </footer>
   </div>
 </div>
 
 <script type="module">
 const API = 'https://alexcapitalai.app.n8n.cloud/webhook/leadflow-demo';
 const CHAT = 'https://alexcapitalai.app.n8n.cloud/webhook/eb54350e-b9ca-422f-9117-989fdfa87459/chat';
-const CHAT_BUNDLE = 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+const CHAT_BUNDLE = 'https://cdn.jsdelivr.net/npm/@n8n/chat@1.41.0/dist/chat.bundle.es.js';
 
 const T = {
   en: {
@@ -154,6 +157,7 @@ const T = {
     headline: n => `${n}: how an assistant on your website would answer patients`,
     barText: 'Personal demo, made from your public website',
     barBtn: 'Book a call',
+    privacy: 'Privacy',
     chatSubtitle: 'Demo, using your public website',
     greeting: n => `Hi, this is the ${n} assistant (demo). Ask about opening hours, treatments or prices, or ask for an appointment.`,
     placeholder: 'Write a message',
@@ -175,6 +179,7 @@ const T = {
     headline: n => `${n}: ovako bi asistent na vašoj stranici odgovarao pacijentima`,
     barText: 'Osobni demo, izrađen iz podataka s vaše stranice',
     barBtn: 'Dogovorite poziv',
+    privacy: 'Privatnost',
     chatSubtitle: 'Demo, iz podataka s vaše stranice',
     greeting: n => `Dobar dan, ovo je demo virtualnog asistenta za ${n}. Pitajte o radnom vremenu, uslugama ili cijenama, ili zatražite termin.`,
     placeholder: 'Napišite poruku',
@@ -227,7 +232,7 @@ async function start() {
   document.documentElement.lang = lang;
   document.title = t.title(name);
   applyText(t);
-  if (lang === 'hr') document.querySelector('[data-home]').href = '/hr/';
+  if (lang === 'hr') { document.querySelector('[data-home]').href = '/hr/'; document.querySelector('[data-privacy]').href = '/hr/privatnost/'; }
   fill('headline', t.headline(name));
   fill('name', name);
   fill('city', clinic.city || '');
