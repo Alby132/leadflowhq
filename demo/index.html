@@ -26,7 +26,7 @@
 .demo-intro p{margin-top:14px;color:var(--muted);max-width:40em;font-size:1.08rem}
 
 .stage{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:start;padding-bottom:40px}
-@media (max-width:960px){.stage{grid-template-columns:1fr}}
+@media (max-width:960px){.stage{grid-template-columns:1fr}.chat-col{order:-1}}
 
 /* mock of the clinic's own site */
 .browser{border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden}
@@ -151,7 +151,7 @@ const CHAT_BUNDLE = 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.
 const T = {
   en: {
     title: n => `Demo for ${n} | LeadFlow HQ`,
-    headline: n => `How an assistant on the ${n} website would answer your patients`,
+    headline: n => `${n}: how an assistant on your website would answer patients`,
     barText: 'Personal demo, made from your public website',
     barBtn: 'Book a call',
     chatSubtitle: 'Demo, using your public website',
@@ -171,12 +171,12 @@ const T = {
     nextTitle: 'Want this on your website?', nextText: "Reply to our email, or book a 30-minute call and we'll set it up with you.", nextBtn: 'Book a 30-minute call'
   },
   hr: {
-    title: n => `Demo za ${n} | LeadFlow HQ`,
-    headline: n => `Kako bi asistent na stranici ${n} odgovarao vašim pacijentima`,
+    title: n => `Demo: ${n} | LeadFlow HQ`,
+    headline: n => `${n}: ovako bi asistent na vašoj stranici odgovarao pacijentima`,
     barText: 'Osobni demo, izrađen iz podataka s vaše stranice',
     barBtn: 'Dogovorite poziv',
     chatSubtitle: 'Demo, iz podataka s vaše stranice',
-    greeting: n => `Dobar dan, ovo je asistent: ${n} (demo). Pitajte o radnom vremenu, uslugama ili cijenama, ili zatražite termin.`,
+    greeting: n => `Dobar dan, ovo je demo virtualnog asistenta za ${n}. Pitajte o radnom vremenu, uslugama ili cijenama, ili zatražite termin.`,
     placeholder: 'Napišite poruku',
     chips: ['Radite li subotom?', 'Koliko košta pregled?', 'Trebam termin sljedeći tjedan', 'Jako me boli zub'],
     nav: ['O nama', 'Usluge', 'Cijene', 'Kontakt'],
@@ -231,7 +231,7 @@ async function start() {
   fill('headline', t.headline(name));
   fill('name', name);
   fill('city', clinic.city || '');
-  fill('url', (clinic.website || '').replace(/^https?:\/\//, '').replace(/\/$/, '') || name.toLowerCase().replace(/\s+/g, '') + '.example');
+  fill('url', (clinic.website || '').replace(/^https?:\/\//, '').replace(/\/$/, '') || (lang === 'hr' ? 'vasa-stranica.hr' : 'your-website.com'));
   fill('nav', t.nav.join('   '));
   fill('hours', clinic.hours || t.notProvided);
   fill('services', clinic.services || t.notProvided);
