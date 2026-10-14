@@ -135,4 +135,34 @@
     el.addEventListener('focus', prefetchChat, { once: true });
     el.addEventListener('touchstart', prefetchChat, { once: true, passive: true });
   });
+  /* "Send us your website" form */
+  var REQUEST_URL = 'https://alexcapitalai.app.n8n.cloud/webhook/leadflow-website-request';
+  [].slice.call(document.querySelectorAll('form[data-request]')).forEach(function (form) {
+    var msg = form.querySelector('.req-msg');
+    var btn = form.querySelector('button[type="submit"]');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var data = new FormData(form);
+      var website = String(data.get('website') || '').trim();
+      var email = String(data.get('email') || '').trim();
+      msg.classList.remove('err');
+      if (!website || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        msg.textContent = msg.getAttribute('data-invalid');
+        msg.classList.add('err');
+        return;
+      }
+      btn.disabled = true;
+      fetch(REQUEST_URL, { method: 'POST', body: new URLSearchParams(data) })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(function () {
+          form.classList.add('done');
+          msg.textContent = msg.getAttribute('data-ok');
+        })
+        .catch(function () {
+          msg.textContent = msg.getAttribute('data-err');
+          msg.classList.add('err');
+          btn.disabled = false;
+        });
+    });
+  });
 })();

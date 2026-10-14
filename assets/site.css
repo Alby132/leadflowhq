@@ -216,3 +216,24 @@ footer{padding:32px 0 48px;color:var(--muted);font-size:.92rem;display:flex;just
   .top nav{gap:10px}
   .top nav a.btn{white-space:nowrap;padding:8px 12px}
 }
+
+/* "send us your website" form */
+.req{margin-top:28px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:24px}
+.req-fields{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:14px}
+.req label{display:block}
+.req label span{display:block;font-size:.9rem;font-weight:600;color:#DDE8E5;margin-bottom:6px}
+.req label em{font-style:normal;font-weight:400;color:#9FB8B1}
+.req input{width:100%;font:inherit;font-size:1rem;padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:#fff;color:var(--ink)}
+.req input:focus-visible{outline:3px solid var(--amber);outline-offset:1px}
+.req .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.btn-amber{margin-top:18px;background:var(--amber);border-color:var(--amber);color:var(--ink)}
+.btn-amber:hover{background:#E5B930;border-color:#E5B930}
+.btn-amber[disabled]{opacity:.7;cursor:progress}
+.req-note{margin-top:10px;font-size:.88rem;color:#9FB8B1}
+.req-msg{margin-top:10px;font-weight:600;color:#fff;min-height:1.4em}
+.req-msg.err{color:#FFD3C4}
+.req.done .req-fields,.req.done .btn-amber,.req.done .req-note{display:none}
+.req.done .req-msg{font-size:1.1rem;margin-top:0}
+.book-alt{margin-top:40px;color:#fff;font-size:1.2rem;font-weight:700}
+.book-alt + .calendly-inline-widget{margin-top:16px}
+@media (max-width:820px){.req-fields{grid-template-columns:1fr}}

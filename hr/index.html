@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=3">
+<link rel="stylesheet" href="/assets/site.css?v=4">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -31,7 +31,7 @@
       <a class="hide-sm" href="#cijena">Cijena</a>
       <a class="hide-sm" href="#pitanja">Pitanja</a>
       <a class="lang" href="/" hreflang="en" lang="en" title="English">EN</a>
-      <a class="btn btn-solid" href="#poziv">Dogovorite poziv</a>
+      <a class="btn btn-solid" href="#poziv">Besplatni demo</a>
     </nav>
   </header>
 
@@ -41,7 +41,7 @@
         <h1>Pacijenti pitaju u&nbsp;21&nbsp;h.<span class="line2">Recepcija otvara u&nbsp;8.</span></h1>
         <p class="lede">LeadFlow HQ dodaje chat asistenta na web stranicu vaše ordinacije. Odgovara na pitanja o radnom vremenu, uslugama i cijenama te vašem timu prosljeđuje zahtjeve za termin. Ujutro vas čekaju u e-mailu, umjesto da pacijent ode u ordinaciju preko puta.</p>
         <div class="actions">
-          <a class="btn btn-solid" href="#poziv">Dogovorite poziv od 30 minuta</a>
+          <a class="btn btn-solid" href="#poziv">Demo na vašoj stranici</a>
           <button class="btn btn-ghost" type="button" id="tryChat" hidden>Isprobajte asistenta</button>
         </div>
       </div>
@@ -122,7 +122,7 @@
             <li>Zahtjevi stižu na vaš e-mail</li>
             <li>Plaćanje mjesečno, otkaz u bilo kojem trenutku</li>
           </ul>
-          <a class="btn btn-solid" href="#poziv">Dogovorite poziv</a>
+          <a class="btn btn-solid" href="#poziv">Demo na vašoj stranici</a>
         </div>
       </div>
     </section>
@@ -140,9 +140,22 @@
 
     <section class="book" id="poziv">
       <h2>Pogledajte kako radi na vašoj stranici</h2>
-      <p class="intro">Dogovorite poziv od 30 minuta. Pokazat ćemo vam asistenta postavljenog s pravim podacima vaše ordinacije, a odluka je na vama.</p>
+      <p class="intro">Pošaljite nam adresu stranice svoje ordinacije. U roku od jednog radnog dana poslat ćemo vam kratki video asistenta koji odgovara s podacima vaše ordinacije i poveznicu na kojoj ga možete sami isprobati. Besplatno i bez obveze.</p>
+      <form class="req" data-request novalidate>
+        <input type="hidden" name="lang" value="hr">
+        <div class="req-fields">
+          <label><span>Web stranica ordinacije</span><input name="website" type="text" inputmode="url" autocomplete="url" placeholder="npr. ordinacija-primjer.hr" required maxlength="200"></label>
+          <label><span>E-mail za video</span><input name="email" type="email" autocomplete="email" placeholder="vi@ordinacija.hr" required maxlength="120"></label>
+          <label><span>Ime i prezime <em>(nije obavezno)</em></span><input name="name" type="text" autocomplete="name" maxlength="80"></label>
+          <label class="hp" aria-hidden="true">Fax<input name="company_fax" type="text" tabindex="-1" autocomplete="off"></label>
+        </div>
+        <button class="btn btn-amber" type="submit">Pošaljite mi video</button>
+        <p class="req-note">Vaš e-mail koristimo samo da vam pošaljemo demo.</p>
+        <p class="req-msg" role="status" aria-live="polite" data-ok="Hvala. Video vam šaljemo e-mailom u roku od jednog radnog dana." data-err="Slanje nije uspjelo. Provjerite adresu stranice i e-mail ili pišite na hello@leadflowhq.tech." data-invalid="Upišite adresu stranice ordinacije i ispravan e-mail."></p>
+      </form>
+      <h3 class="book-alt">Radije razgovarate? Odaberite termin za poziv od 30 minuta.</h3>
       <div class="calendly-inline-widget" data-url="https://calendly.com/hello-leadflowhq/30min?hide_gdpr_banner=1"><p class="cal-wait">Učitavanje slobodnih termina…</p></div>
-      <p class="alt">Radije e-mailom? Pišite na <a href="mailto:hello@leadflowhq.tech">hello@leadflowhq.tech</a>.</p>
+      <p class="alt">Ili pišite na <a href="mailto:hello@leadflowhq.tech">hello@leadflowhq.tech</a>.</p>
     </section>
   </main>
 
@@ -156,6 +169,6 @@
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.9A8 8 0 1 1 21 12z"/></svg>
 </button>
 
-<script src="/assets/site.js?v=3" defer></script>
+<script src="/assets/site.js?v=4" defer></script>
 </body>
 </html>
